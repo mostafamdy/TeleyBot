@@ -1,0 +1,76 @@
+data: { message: 'code sent', phone_code_hash: 'a0887181dec94e42f7' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '68a4d0ca29b2e30537' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'f2f6a078f6e2099eb2' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '1368145e3e3d1d9728' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '2a1c00778661d75b55' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'ecd385cfb6ff90a7aa' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '7e73b5cb2d821ceb84' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '83e45d77b2cc481bdb' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '321502fabaeeb85425' }
+{
+  detail: {
+    message: 'Error verifying code, try again later',
+    error: "500: {'message': 'Error signing in to Telegram', 'error': 'The phone code entered was invalid (caused by SignInRequest)'}"
+  }
+}
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'be04726c9fcc02a3f5' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '921c93d9c091f06d89' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '84435b363cd3389e14' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '6002186d5019caed7b' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'e8927155b729a360a6' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'c9acdb1af6afd8ab89' }
+{
+  detail: {
+    message: 'Error verifying code, try again later',
+    error: "500: {'message': 'Error signing in to Telegram', 'error': 'The phone code entered was invalid (caused by SignInRequest)'}"
+  }
+}
+{
+  detail: {
+    message: 'Error verifying code, try again later',
+    error: '500: Failed to add bot: (sqlite3.IntegrityError) UNIQUE constraint failed: bots.phone\n' +
+      '[SQL: INSERT INTO bots (session, phone, message_id, created_at) VALUES (?, ?, ?, ?)]\n' +
+      "[parameters: ('1BJWap1wBu5ghWjCUSTnQ1TxboJjGuOHcFBRprk3RJMvS6P1G_3L-TymoIXrA09vfJvp0BwsDPdHw-2yJAJIlsl-Q6qKODIec54ws02rGi3NNe8TP3G6HUVsm-5RngyRKwUyuvkFfQ4lg-u4xayQ9 ... (55 characters truncated) ... khlH33TuA16rD0vSUxPdjIIarEyR1UL1Cv0NSgvFSwQl9wo86DkUPGx3OUCeXIMu57GHCjKDfDZdIljLrhZwWoAcF9vUlwQy9nJLcSb9_6lI_-nIyKpoC09DkLOGhXSc59AUiHObeIZ2m0e83akE=', '', None, '2024-10-31 20:37:33')]\n" +
+      '(Background on this error at: https://sqlalche.me/e/20/gkpj)'
+  }
+}
+data: { message: 'code sent', phone_code_hash: '0734b606554a98bd38' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '6c4f893b03aaed8527' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'e8d43626b2ddc4c5b0' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '5ab7f1d3166972912e' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'fefb497f0c24108d8a' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '7ab686d8255d73444a' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '772202a008f85f673c' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'b3a5a1bd68c53545e1' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '72d96ef6ae0ed4b71b' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '4122f0aecc14481cb1' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'a83e05dd49b9f60ede' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: 'a14cafb278df3915bb' }
+{ message: 'code verified' }
+data: { message: 'code sent', phone_code_hash: '409a1b6e63bfa05deb' }
+{ message: 'code verified' }

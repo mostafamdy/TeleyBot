@@ -1,0 +1,10 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "sql_py",
+      "database": "${workspaceFolder:Tele-Bot-Api-Py}/bots.db"
+    }
+  ]
+}

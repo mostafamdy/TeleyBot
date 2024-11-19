@@ -1,0 +1,10 @@
++212632505275		2024-11-03 20:52:32	
++212632497396		2024-11-03 20:52:32	
++212632489868		2024-11-03 20:52:32	
+
+1- Add delay (Joining groups - Sending messages)
+2- Proxy (TelegramClient)
+3- Add list group (done just test it)
+4- Check code and clean it
+5- Finally Numbers
+6- Move Bots when banned
