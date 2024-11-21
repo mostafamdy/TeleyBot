@@ -2,7 +2,6 @@ import asyncio
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import os
-
 try:
     from app.constants import ADMIN_GROUP
     from app.db_handler import DbHandler
@@ -11,6 +10,7 @@ except ImportError:
     from constants import ADMIN_GROUP
     from db_handler import DbHandler
     from services.telegram_bot import TelegramBot
+
 # Database path
 DB_PATH = "bots.db"
 db_handler = DbHandler()
@@ -35,7 +35,7 @@ async def file_modified_callback(file_path):
     if globals()['lock']:
         pass
     
-    elif "bots.db" == file_path.split("\\")[-1].strip():
+    elif "bots.db" == os.path.basename(file_path).strip():
         globals()['lock']=True
         #print(f"Database modified ")
         # Add additional async actions here
@@ -61,13 +61,13 @@ async def monitor_directory(path):
     observer.start()
     try:
         while True:
-            await asyncio.sleep(1)  # Keep the coroutine alive
+            await asyncio.sleep(5)  # Keep the coroutine alive
     finally:
         observer.stop()
         observer.join()
 
 # Run the async directory monitor
-current_dir=os.getcwd()
+current_dir = os.getcwd()
 print("Current Dir")
 print(current_dir)
 path_to_watch = current_dir  # Replace with your directory
