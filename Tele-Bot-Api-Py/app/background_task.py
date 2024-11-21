@@ -29,7 +29,9 @@ class AsyncEventHandler(FileSystemEventHandler):
         # Schedule the async task in the event loop
         asyncio.run_coroutine_threadsafe(self.on_modified_async(event), self.loop)
 
-async def file_modified_callback(file_path):   
+async def file_modified_callback(file_path):  
+    print("File Modified")
+    print(file_path) 
     if globals()['lock']:
         pass
     
@@ -59,7 +61,7 @@ async def monitor_directory(path):
     observer.start()
     try:
         while True:
-            await asyncio.sleep(30)  # Keep the coroutine alive
+            await asyncio.sleep(1)  # Keep the coroutine alive
     finally:
         observer.stop()
         observer.join()
