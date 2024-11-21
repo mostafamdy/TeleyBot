@@ -59,7 +59,7 @@ async def send_message(breakPointIndex):
                 
                 date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
                 #print(date_string)
-                print("\nBot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message+"\n")
+                print("\nBot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID ("+str(_)+")\nmessage "+ bot.message+"\n")
 
                 #await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
                 
