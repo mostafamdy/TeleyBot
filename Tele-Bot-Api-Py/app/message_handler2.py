@@ -50,12 +50,10 @@ async def send_message(breakPointIndex):
                     bots_groups[bot.id]['AvailableGroups'] = bots_groups[bot.id]['VisitedGroups']
                     bots_groups[bot.id]['VisitedGroups'] = []
                     av_groups = bots_groups[bot.id]['AvailableGroups']
-                if len(av_groups) == 1:
-                    print(f"available group lens is 1")
-                    random_index = 0
-                else:
-                    print(f"Else available group lens is {len(av_groups)}")
+                try:
                     random_index = random.randint(0, len(av_groups)-1)
+                except:
+                    random_index=0
 
                 random_group = bots_groups[bot.id]['AvailableGroups'].pop(random_index)  
                 date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
@@ -69,7 +67,7 @@ async def send_message(breakPointIndex):
 
 
 
-working_bots_at_same_time = 4
+working_bots_at_same_time = 2
 
 # Main coroutine
 async def main():
