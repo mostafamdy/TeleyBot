@@ -68,7 +68,40 @@ async def monitor_directory(path):
 
 # Run the async directory monitor
 current_dir = os.getcwd()
-print("Current Dir")
-print(current_dir)
 path_to_watch = current_dir  # Replace with your directory
 asyncio.run(monitor_directory(path_to_watch))
+
+"""
+bots will start sending 
+bot1 send 25 message the time between each message is 3 sec - 5 sec then 
+bot2 start sending 25 message and so on
+
+
+"""
+
+"""
+Each bot will have a list of groups we will choose random group from avaliable ones then add this group to used groups
+
+BOT {
+Available groups:[]
+Visited Groups : [],
+current GroupID
+}
+"""
+
+"""
+for bot in bots:
+    for i in range(MessageLimit):
+        choose random value from Available groups
+        send message to this group 
+        => check if bot is banned 
+        add group to Visited Groups
+        wait random from 3 to 5 sec 
+"""
+
+"""
+Time between messages => 3 to 5
+Time for each bot 30 sec so it mean it will 
+This script will run for 1 day and then release the bots
+
+"""
