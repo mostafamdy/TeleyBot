@@ -1,6 +1,7 @@
 import asyncio
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import os
 
 try:
     from app.constants import ADMIN_GROUP
@@ -64,5 +65,6 @@ async def monitor_directory(path):
         observer.join()
 
 # Run the async directory monitor
-path_to_watch = "./"  # Replace with your directory
+current_dir=os.getcwd()
+path_to_watch = current_dir  # Replace with your directory
 asyncio.run(monitor_directory(path_to_watch))
