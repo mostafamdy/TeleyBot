@@ -64,5 +64,5 @@ async def monitor_directory(path):
         observer.join()
 
 # Run the async directory monitor
-path_to_watch = "D:\\telegramBot\\apps\\apps\\Tele-Bot-Api-Py\\app"  # Replace with your directory
+path_to_watch = "./"  # Replace with your directory
 asyncio.run(monitor_directory(path_to_watch))

@@ -49,6 +49,12 @@ bot.onText(/\/show_groups/, async msg => {
     message=dataString;
     _chatId=chatId
   }
+  else{
+    await bot.sendMessage(
+      chatId,
+      dataString
+    );
+  }
 
 });
 

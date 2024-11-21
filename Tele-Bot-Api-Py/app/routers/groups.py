@@ -90,22 +90,25 @@ async def join_group(data: JoinGroupALL):
     try:
         db_bot = db_handler.get_all()
         print("All bots", len(db_bot))
-
+        is_groub_saved = False
         for indx,bot in enumerate(db_bot):
             telegram_bot = TelegramBot(bot.session)
             # connect
             try:
                 await telegram_bot.connect()
             except Exception as e:
+                # if error is The key is not registered in the system (caused by ImportChatInviteRequest)
+                # The user has been deleted/deactivated (caused by ImportChatInviteRequest)
                 print(e)
                 continue
             # Join Group
             try:
                 result = await telegram_bot.join_group(data.link)
                 # Save Group
-                if indx == 0:
+                if is_groub_saved == False:
                     info = await telegram_bot.get_group_info_by_link(data.link)
-                    db_handler.add_group(data.link,info['id'],info['title'])
+                    db_handler.add_group(data.link, info['id'], info['title'])
+                    is_groub_saved = True
 
                 await telegram_bot.disconnect()
             except Exception as e:
@@ -125,6 +128,8 @@ async def join_groups_list(data: JoinGroupALL):
     try:
         db_bot = db_handler.get_all()
         print("All bots", len(db_bot))
+        is_groub_saved = False
+
         for indx,bot in enumerate(db_bot):
             telegram_bot = TelegramBot(bot.session)
             try:
@@ -134,7 +139,7 @@ async def join_groups_list(data: JoinGroupALL):
                 continue
             # Join Groups
             try:
-                if indx == 0:
+                if is_groub_saved == False:
                     # Save Groups
                     groups_before = await telegram_bot.get_groups()
                     groups_before = [g.title for g in groups_before]
@@ -145,7 +150,7 @@ async def join_groups_list(data: JoinGroupALL):
                             continue
                         #info = await telegram_bot.get_group_info_by_link(data.link)
                         db_handler.add_group(None,group.id,group.title)
-
+                    is_groub_saved = True
                 else:
                     result = await telegram_bot.join_group(data.link)
                 await telegram_bot.disconnect()
