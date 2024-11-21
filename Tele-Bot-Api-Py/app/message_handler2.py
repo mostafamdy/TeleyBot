@@ -43,6 +43,7 @@ async def send_message(breakPointIndex):
 
     while True:
         for bot in _bots:
+            print(f"Bot ID {bot.id}")
             #telegram_bot = TelegramBot(bot.session)
             #await telegram_bot.connect()
             for _ in range(25):
