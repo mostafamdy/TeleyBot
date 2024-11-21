@@ -37,7 +37,7 @@ bots/3
 
 
 """
-def send_message(breakPointIndex):
+async def send_message(breakPointIndex):
     startPoint = int(len(groups_status)/working_bots_at_same_time) * breakPointIndex
 
     _bots = bots[startPoint:]+bots[:startPoint]
@@ -47,12 +47,9 @@ def send_message(breakPointIndex):
 
     while True:
         for bot in _bots:
-            print(f"Bot ID {bot.id}")
-            print(groups_status)
-            #telegram_bot = TelegramBot(bot.session)
-            #await telegram_bot.connect()
+            telegram_bot = TelegramBot(bot.session)
+            await telegram_bot.connect()
             for _ in range(25):
-                print(groups_status[5])
                 if len(groups_status[bot.id]['AvailableGroups']) == 0:
                     groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
                     groups_status[bot.id]['VisitedGroups'] = []
@@ -68,23 +65,21 @@ def send_message(breakPointIndex):
                 #print(date_string)
                 print("\nBot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID ("+str(_)+")\nmessage "+ bot.message+"\n")
 
-                #await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
+                await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
                 
                 groups_status[bot.id]['VisitedGroups'].append(random_group)
 
                 print(f"({bot.id}) groups visited {len(groups_status[bot.id]['VisitedGroups'])}")
                 print(f"({bot.id}) groups available {len(groups_status[bot.id]['AvailableGroups'])}")
-                #await asyncio.sleep(random.uniform(3,5))
+                await asyncio.sleep(random.uniform(3,5))
 
 
 working_bots_at_same_time = 1
-"""
 
 # Main coroutine
 async def main():
     tasks = [send_message(i) for i in range(working_bots_at_same_time)]  # Create 3 async tasks
     await asyncio.gather(*tasks)
 
-asyncio.run(main())"""
+asyncio.run(main())
 
-send_message(0)
