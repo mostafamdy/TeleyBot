@@ -35,7 +35,7 @@ bots/3
 
 
 """
-async def send_message(breakPointIndex):
+def send_message(breakPointIndex):
     startPoint = int(len(groups_status)/working_bots_at_same_time) * breakPointIndex
 
     _bots = bots[startPoint:]+bots[:startPoint]
@@ -75,12 +75,14 @@ async def send_message(breakPointIndex):
                 #await asyncio.sleep(random.uniform(3,5))
 
 
-
 working_bots_at_same_time = 1
+"""
 
 # Main coroutine
 async def main():
     tasks = [send_message(i) for i in range(working_bots_at_same_time)]  # Create 3 async tasks
     await asyncio.gather(*tasks)
 
-asyncio.run(main())
+asyncio.run(main())"""
+
+send_message(0)
