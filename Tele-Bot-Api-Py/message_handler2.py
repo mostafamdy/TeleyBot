@@ -34,10 +34,12 @@ bots/3
 
 """
 async def send_message(breakPointIndex):
-    startPoint = int(len(bots)/working_bots_at_same_time) * breakPointIndex
+    startPoint = int(len(bots_groups)/working_bots_at_same_time) * breakPointIndex
 
     _bots = bots[startPoint:]+bots[:startPoint]
-
+    print(startPoint)
+    print(_bots)
+    
     while True:
         for bot in _bots:
             telegram_bot = TelegramBot(bot.session)
