@@ -72,7 +72,7 @@ async def send_message(breakPointIndex):
 
 
 
-working_bots_at_same_time = 2
+working_bots_at_same_time = 1
 
 # Main coroutine
 async def main():
