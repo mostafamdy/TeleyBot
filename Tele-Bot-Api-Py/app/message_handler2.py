@@ -24,6 +24,8 @@ groups_status={}
 for b in bots:
     groups_status[b.id]={"AvailableGroups":groups,"VisitedGroups":[]}
 print([b.id for b in bots])
+print(groups_status)
+
 """
 3 
 
@@ -44,6 +46,7 @@ async def send_message(breakPointIndex):
     while True:
         for bot in _bots:
             print(f"Bot ID {bot.id}")
+            print(groups_status)
             #telegram_bot = TelegramBot(bot.session)
             #await telegram_bot.connect()
             for _ in range(25):
