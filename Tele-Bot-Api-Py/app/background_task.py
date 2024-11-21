@@ -66,5 +66,7 @@ async def monitor_directory(path):
 
 # Run the async directory monitor
 current_dir=os.getcwd()
+print("Current Dir")
+print(current_dir)
 path_to_watch = current_dir  # Replace with your directory
 asyncio.run(monitor_directory(path_to_watch))
