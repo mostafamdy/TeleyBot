@@ -50,7 +50,7 @@ async def send_message(breakPointIndex):
             #telegram_bot = TelegramBot(bot.session)
             #await telegram_bot.connect()
             for _ in range(25):
-                print(groups_status)
+                print(groups_status[5])
                 if len(groups_status[bot.id]['AvailableGroups']) == 0:
                     groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
                     groups_status[bot.id]['VisitedGroups'] = []
