@@ -57,7 +57,7 @@ async def send_message(breakPointIndex):
                 await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessage "+ bot.message)
                 bots_groups[bot.id]['VisitedGroups'].append(random_group)
 
-                asyncio.sleep(random.uniform(3,5))
+                await asyncio.sleep(random.uniform(3,5))
 
 
 
