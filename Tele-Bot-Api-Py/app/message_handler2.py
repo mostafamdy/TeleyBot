@@ -20,9 +20,9 @@ db_handler = DbHandler()
 bots = db_handler.get_bots_have_message()
 groups = db_handler.get_all_groups()
 
-bots_groups={}
+groups_status={}
 for b in bots:
-    bots_groups[b.id]={"AvailableGroups":groups,"VisitedGroups":[]}
+    groups_status[b.id]={"AvailableGroups":groups,"VisitedGroups":[]}
 
 """
 3 
@@ -34,37 +34,37 @@ bots/3
 
 """
 async def send_message(breakPointIndex):
-    startPoint = int(len(bots_groups)/working_bots_at_same_time) * breakPointIndex
+    startPoint = int(len(groups_status)/working_bots_at_same_time) * breakPointIndex
 
     _bots = bots[startPoint:]+bots[:startPoint]
     print(startPoint)
-    print(_bots)
+    print([b.id for b in _bots])
     print(len(_bots))
 
     while True:
         for bot in _bots:
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
-            for i in range(25):
-                if len(bots_groups[bot.id]['AvailableGroups']) == 0:
-                    bots_groups[bot.id]['AvailableGroups'] = bots_groups[bot.id]['VisitedGroups']
-                    bots_groups[bot.id]['VisitedGroups'] = []
+            for _ in range(25):
+                if len(groups_status[bot.id]['AvailableGroups']) == 0:
+                    groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
+                    groups_status[bot.id]['VisitedGroups'] = []
                 
                 try:
-                    random_index = random.randint(0, len(bots_groups[bot.id]['AvailableGroups'])-1)
+                    random_index = random.randint(0, len(groups_status[bot.id]['AvailableGroups'])-1)
                 except:
                     random_index = 0
 
-                random_group = bots_groups[bot.id]['AvailableGroups'].pop(random_index)  
-                date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
+                random_group = groups_status[bot.id]['AvailableGroups'].pop(random_index)  
                 
+                date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
                 print(date_string)
                 print("Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessage "+ bot.message)
 
-                await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessage "+ bot.message)
+                await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+_+"\nmessage "+ bot.message)
                 
-                bots_groups[bot.id]['VisitedGroups'].append(random_group)
-                print(len(bots_groups[bot.id]['VisitedGroups']))
+                groups_status[bot.id]['VisitedGroups'].append(random_group)
+                print(len(groups_status[bot.id]['VisitedGroups']))
 
                 await asyncio.sleep(random.uniform(3,5))
 
