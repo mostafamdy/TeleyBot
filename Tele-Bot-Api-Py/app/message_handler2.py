@@ -4,6 +4,8 @@ import random
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import os
+import copy
+
 try:
     from app.constants import ADMIN_GROUP
     from app.db_handler import DbHandler
@@ -22,7 +24,7 @@ groups = db_handler.get_all_groups()
 
 groups_status={}
 for b in bots:
-    groups_status[b.id]={"AvailableGroups":groups,"VisitedGroups":[]}
+    groups_status[b.id]={"AvailableGroups":copy.deepcopy(groups),"VisitedGroups":[]}
 print([b.id for b in bots])
 print(groups_status)
 
