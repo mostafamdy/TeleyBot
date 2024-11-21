@@ -39,29 +39,32 @@ async def send_message(breakPointIndex):
     _bots = bots[startPoint:]+bots[:startPoint]
     print(startPoint)
     print(_bots)
-    
+    print(len(_bots))
+
     while True:
         for bot in _bots:
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
             for i in range(25):
-                av_groups = bots_groups[bot.id]['AvailableGroups']
-                if len(av_groups) == 0:
+                if len(bots_groups[bot.id]['AvailableGroups']) == 0:
                     bots_groups[bot.id]['AvailableGroups'] = bots_groups[bot.id]['VisitedGroups']
                     bots_groups[bot.id]['VisitedGroups'] = []
-                    av_groups = bots_groups[bot.id]['AvailableGroups']
+                
                 try:
-                    random_index = random.randint(0, len(av_groups)-1)
+                    random_index = random.randint(0, len(bots_groups[bot.id]['AvailableGroups'])-1)
                 except:
-                    random_index=0
+                    random_index = 0
 
                 random_group = bots_groups[bot.id]['AvailableGroups'].pop(random_index)  
                 date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
+                
                 print(date_string)
                 print("Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessage "+ bot.message)
 
                 await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessage "+ bot.message)
+                
                 bots_groups[bot.id]['VisitedGroups'].append(random_group)
+                print(len(bots_groups[bot.id]['VisitedGroups']))
 
                 await asyncio.sleep(random.uniform(3,5))
 
