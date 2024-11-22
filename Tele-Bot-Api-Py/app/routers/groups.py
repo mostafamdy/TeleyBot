@@ -164,9 +164,9 @@ async def join_groups_list(data: JoinGroupALL):
                     
                     result = await telegram_bot.join_group(data.link)
                     groups_after = await telegram_bot.get_groups()
-                    groups_after = [g.id for g in groups_after]
+                    #groups_after = [g.id for g in groups_after]
                     for g in groups_after:
-                        if g in saved_groups:
+                        if g.id in saved_groups:
                             continue
                         #info = await telegram_bot.get_group_info_by_link(data.link)
                         db_handler.add_group(None,g.id,g.title)
@@ -192,12 +192,13 @@ async def join_groups_list(data: JoinGroupALL):
             saved_groups = [g.id for g in saved_groups]
 
             groups_after = await telegram_bot.get_groups()
-            groups_after = [g.id for g in groups_after]
+            #groups_after = [g.id for g in groups_after]
+
             for g in groups_after:
-                if g in saved_groups:
+                if g.id in saved_groups:
                     continue
                 db_handler.add_group(None,g.id,g.title)
-                
+
             await telegram_bot.disconnect()
     
         return {"message": "All bots joined group"}
