@@ -18,14 +18,14 @@ try:
     source_cursor.execute("SELECT * FROM bots")  # Replace 'table_name' with your actual table
     data = source_cursor.fetchall()
 
-    for raw in data:
+    for raw in data[:10]:
         # Insert data into the destination database
         # Adjust column names and table structure as needed
         destination_cursor.execute(
             "INSERT INTO bots (session, phone,created_at) VALUES (?, ?, ?)",  # Adjust the query
             (raw[1],raw[2],raw[4])
         )
-        
+
     # Commit the changes
     destination_conn.commit()
     print("Data successfully copied!")
