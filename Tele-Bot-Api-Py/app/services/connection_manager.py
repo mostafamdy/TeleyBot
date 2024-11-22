@@ -12,7 +12,7 @@ class ConnectionManager:
 
     async def is_banned(self):
         try:
-            await self.client.get_me()
+            print(await self.client.get_me())
             return False
         except Exception as e:
             print(e)
