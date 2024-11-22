@@ -98,8 +98,10 @@ bot.onText(/\/show_settings/, async msg => {
   state = "show_settings"
   const chatId = msg.chat.id;
   const result = await api.getSenderSettings();
-  
-  bot.sendMessage(chatId,JSON.stringify(result,null, 2));
+  const botsThreads=result['workingBotsAtSameTime']
+  const maxMessage=result['botMaxMessages']
+  const reply = "The system is currently running ("+botsThreads+") bots at the same time. Each bot will send ("+maxMessage+") message before moving on to the next bot"
+  bot.sendMessage(chatId,reply);
 
 });
 
@@ -108,7 +110,15 @@ bot.onText(/\/change_settings/, async msg => {
   state = "change_settings"
   const chatId = msg.chat.id;
   const { data } = await api.getCount();
-  const reply="Choose bots' speed. \nEnter a number from 1 to "+data.unavailable+"\n*Note*\n High number will increase the bots banned possibality\n";
+  let reply="";
+
+  if (data.unavailable == 0){
+    reply="Choose bots' speed. \nEnter a number from 1 to "+10+"\n*Note*\n High number will increase the bots banned possibality\n";
+  }
+  else{
+    reply="Choose bots' speed. \nEnter a number from 1 to "+data.unavailable+"\n*Note*\n High number will increase the bots banned possibality\n";
+
+  }
   isChangeSettings=1;
   bot.sendMessage(chatId,reply);
 
