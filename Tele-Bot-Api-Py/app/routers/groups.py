@@ -98,10 +98,11 @@ async def join_group(data: JoinGroupALL):
     2- loop to connect bots and join group
     3- if it first bot get group info (id title) and save it in database
     """
+    is_groub_saved = False
     try:
         db_bot = db_handler.get_all()
         print("All bots", len(db_bot))
-        is_groub_saved = False
+        
         for indx,bot in enumerate(db_bot):
             telegram_bot = TelegramBot(bot.session)
             # connect
@@ -125,17 +126,15 @@ async def join_group(data: JoinGroupALL):
             except Exception as e:
                 print(e)
                 continue
-        
+    except Exception as e:
+        print(e)
+        return {"message": f"ERROR {e}"}
+    finally:
         if is_groub_saved == False:
             telegram_bot = TelegramBot(db_bot[0].session)
             info = await telegram_bot.get_group_info_by_link(data.link)
             db_handler.add_group(data.link, info['id'], info['title'])
 
-        return {"message": result.get('message')}
-    
-    except Exception as e:
-        print(e)
-    finally:
         return {"message": "All bots joined group"}
 
 
@@ -180,11 +179,10 @@ async def join_groups_list(data: JoinGroupALL):
             except Exception as e:
                 print(e)
                 continue
-
-        return {"message": result.get('message')}
     
     except Exception as e:
         print(e)
+        return {"message": f"ERROR {e}"}
     finally:
         return {"message": "All bots joined group"}
 
