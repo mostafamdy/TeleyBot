@@ -72,6 +72,7 @@ def send_message(message:Message):
         bots = db_handler.get_all()[message.start-1:message.end]
         for bot in bots:
             db_handler.update_message(bot.id, message.message)
+        os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     except Exception as e:
         return {"message": 'Error updating message_id', 'error': str(e)}
@@ -195,6 +196,7 @@ def save_settings(settings:SenderSettings):
         # Save to a file
         with open("senderSettings.json", "w") as file:
             json.dump(data, file, indent=4)
+        os.system("sudo systemctl restart massage")
         return {"message":"Settings Updated"}
     except:
         return {"message":"Can't change the settings now"}
