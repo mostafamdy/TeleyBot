@@ -48,7 +48,7 @@ async def send_message(breakPointIndex):
             time_diff = datetime.now() - start_at
             working_hours = time_diff.total_seconds() / 3600 
             
-            if working_hours>=0.05:
+            if working_hours>=24:
                 db_handler.update_message(bot.id,None)
                 blocked_bots.append(bot.id)
                 continue
@@ -80,9 +80,8 @@ async def send_message(breakPointIndex):
                     print(f"Bot is Banned ({bot.id}) : {isBanned}")
                     if isBanned:
                         db_handler.ban(bot.id)
-
-                    blocked_bots.append(bot.id)
-                    break
+                        blocked_bots.append(bot.id)
+                        break
 
                 groups_status[bot.id]['VisitedGroups'].append(random_group)
                 await asyncio.sleep(random.uniform(3,5))
