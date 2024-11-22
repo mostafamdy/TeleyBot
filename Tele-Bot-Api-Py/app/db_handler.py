@@ -138,7 +138,10 @@ class DbHandler:
             bot = self.db.query(Bot).filter(Bot.id == id).first()
             if bot:
                 bot.message = message
-                bot.start_sending_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                if message is None:
+                    bot.start_sending_at = None
+                else:
+                    bot.start_sending_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 self.db.commit()
         except Exception as e:
             self.db.rollback()

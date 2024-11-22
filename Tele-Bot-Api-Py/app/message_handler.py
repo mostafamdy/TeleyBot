@@ -44,6 +44,15 @@ async def send_message(breakPointIndex):
         for bot in _bots:
             if bot.id in blocked_bots:
                 continue
+            start_at = datetime.strptime(bot.start_sending_at, "%Y-%m-%d %H:%M:%S")
+            time_diff = datetime.now() - start_at
+            working_hours = time_diff.total_seconds() / 3600 
+            
+            if working_hours>=0.05:
+                db_handler.update_message(bot.id,None)
+                blocked_bots.append(bot.id)
+                continue
+
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
             for _ in range(settings['botMaxMessages']):
