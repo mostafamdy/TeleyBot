@@ -70,6 +70,10 @@ async def send_message(breakPointIndex):
 
                 ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
                 if ret == -1:
+                    isBanned = await telegram_bot.is_banned()
+                    if isBanned:
+                        db_handler.ban(bot.id)
+
                     blocked_bots.append(bot.id)
                     break
 
