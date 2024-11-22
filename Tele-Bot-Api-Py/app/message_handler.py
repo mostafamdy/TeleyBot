@@ -84,7 +84,7 @@ async def send_message(breakPointIndex):
                         break
 
                 groups_status[bot.id]['VisitedGroups'].append(random_group)
-                await asyncio.sleep(random.uniform(3,5))
+                await asyncio.sleep(random.uniform(2,5))
 
 working_bots_at_same_time = settings['workingBotsAtSameTime']
 # bot will released after 25 message and then 
