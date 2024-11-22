@@ -10,14 +10,17 @@ let firstNumber: number,
 let longMessage=false;
 let message="";
 let _chatId=0;
-let isDeleteGroup=false;
 
 let isChangeSettings=0;
 let botsThreads=-1;
 let botsMaxMessages=-1;
 
+
+
+let state = "start"
+
 bot.onText(/\/start/, async msg => {
-  isDeleteGroup=false
+  state="start"
   const { data } = await api.getCount();
   const chatId = msg.chat.id;
   await bot.sendMessage(
@@ -33,7 +36,7 @@ bot.onText(/\/start/, async msg => {
 });
 
 bot.onText(/\/message/, async msg => {
-  isDeleteGroup=false
+  state="message"
   const chatId = msg.chat.id;
   await bot.sendMessage(
     chatId,
@@ -42,10 +45,8 @@ bot.onText(/\/message/, async msg => {
 });
 
 bot.onText(/\/show_groups/, async msg => {
-  isDeleteGroup=false
-  
+  state = "show_groups"
   const chatId = msg.chat.id;
-
   const data = await api.getGroups();
   const dataString = JSON.stringify(data,null, 2)
   if (dataString.length>4000){
@@ -75,7 +76,7 @@ setInterval(async ()=>{
 }, 1000)
 
 bot.onText(/\/join_group/, async msg => {
-  isDeleteGroup=false
+  state="join_group"
   const chatId = msg.chat.id;
   await bot.sendMessage(
     chatId,
@@ -85,8 +86,8 @@ bot.onText(/\/join_group/, async msg => {
 
 
 bot.onText(/\/delete_group/, async msg => {
+  state = "delete_group"
   const chatId = msg.chat.id;
-  isDeleteGroup=true
   await bot.sendMessage(
     chatId,
     'Enter Group ID',
@@ -94,8 +95,8 @@ bot.onText(/\/delete_group/, async msg => {
 });
 
 bot.onText(/\/show_settings/, async msg => {
+  state = "show_settings"
   const chatId = msg.chat.id;
-
   const result = await api.getSenderSettings();
   
   bot.sendMessage(chatId,JSON.stringify(result,null, 2));
@@ -104,6 +105,7 @@ bot.onText(/\/show_settings/, async msg => {
 
 
 bot.onText(/\/change_settings/, async msg => {
+  state = "change_settings"
   const chatId = msg.chat.id;
   const { data } = await api.getCount();
   const reply="Choose bots' speed. \nEnter a number from 1 to "+data.unavailable+"\n*Note*\n High number will increase the bots banned possibality\n";
@@ -112,37 +114,26 @@ bot.onText(/\/change_settings/, async msg => {
 
 });
 
-
-bot.onText(/\/delete_group/, async msg => {
-  const chatId = msg.chat.id;
-  isDeleteGroup=true
-  bot.sendMessage(
-    chatId,
-    'Enter Group ID',
-  );
-});
-
 bot.on('message', async msg => {
   const chatId = msg.chat.id;
   //console.log("chat id"+chatId)
   const text = msg.text;
   if (text?.startsWith('/')) {
-    isDeleteGroup=false
     return;
   }
-  if (isDeleteGroup){
+  if (state=="delete_group"){
     const result = await api.deleteGroup(text??"")
     console.log(result)
     bot.sendMessage(chatId,result['message']);
   }
-  if(isChangeSettings==1 && botsThreads == -1){
+  else if(state == "change_settings" && isChangeSettings==1 && botsThreads == -1){
     botsThreads=Number(text)
     const reply="Now choose bots' Time before taking a rest . \n\nEnter a number of messages The bot will send before taking the rest and changing to another bot to work";
     isChangeSettings=2;
     bot.sendMessage(chatId,reply);
   }
 
-  else if(isChangeSettings == 2 && botsMaxMessages == -1){
+  else if(state == "change_settings" &&isChangeSettings == 2 && botsMaxMessages == -1){
     botsMaxMessages = Number(text)
     const reply="Great each bot now will work from "+3*botsMaxMessages+" sec to"+5*botsMaxMessages+" sec then we move to next bot ";
     isChangeSettings=3;
@@ -154,13 +145,13 @@ bot.on('message', async msg => {
     isChangeSettings=0;
   }
 
-  if (text?.match(/^\d+,\d+$/)) {
+  else if (state == "message" && text?.match(/^\d+,\d+$/)) {
     //validate the input
 
     [firstNumber, secondNumber] = String(text).split(',').map(Number);
     bot.sendMessage(chatId, 'now you can forward the message you want to spam');
   } 
-  else if (firstNumber !== 0 && secondNumber !== 0) {
+  else if (state == "message" && firstNumber !== 0 && secondNumber !== 0) {
     
     console.log(msg.text)
     console.log(msg.message_id);
@@ -174,7 +165,7 @@ bot.on('message', async msg => {
     firstNumber = 0;
     secondNumber = 0;
   }
-  else if (text?.startsWith("https://t.me")){
+  else if (state == "join_group" && text?.startsWith("https://t.me")){
     if (text.includes("addlist")){
       const { message } = await api.joinGroupList(text);
       bot.sendMessage(chatId, message);
@@ -186,7 +177,7 @@ bot.on('message', async msg => {
   }
 });
 
-
+/*
 bot.onText(/\/price/, (msg, match) => {
   const opts = {
       reply_markup: {
@@ -230,5 +221,5 @@ bot.on('callback_query', function onCallbackQuery(callbackQuery) {
 
 
 bot.on('polling_error', error => console.error('Polling error:', error));
-
+*/
 console.log('Bot is running!');
