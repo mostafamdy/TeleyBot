@@ -75,6 +75,32 @@ export default {
     }
   },
 
+  async getSenderSettings() {
+    try {
+      const response = await fetch(`${BASE_URL}/bots/settings/`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return error;
+    }
+  },
+
+  async changeSenderSettings(workingBotsAtSameTime: number, botMaxMessages: number) {
+    try {
+      const response = await fetch(`${BASE_URL}/bots/settings/change`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ workingBotsAtSameTime, botMaxMessages }),
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return error;
+    }
+  },
+
   async deleteGroup(id:string) {
     try {
       const response = await fetch(`${BASE_URL}/groups/deleteGroup?id=${id}`);

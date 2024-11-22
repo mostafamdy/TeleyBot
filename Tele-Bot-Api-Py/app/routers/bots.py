@@ -3,6 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 import os
 from fastapi import APIRouter
 from pydantic import BaseModel
+import json
 
 try:
     from app.services.telegram_bot import TelegramBot
@@ -178,14 +179,30 @@ def ban_bot(bot_id: int, phone: str):
     db_handler.ban(bot_id, phone)
     return {"message": "bot banned"}
 
-
-@router.get("/start-sender/")
-def start_sender():
-    os.system('pm2 start 3 4 6')
-    return {"message": "sender started"}
+class SenderSettings(BaseModel):
+    workingBotsAtSameTime: int
+    botMaxMessages: int
 
 
-@router.get("/stop-sender/")
-def stop_sender():
-    os.system('pm2 stop 3 4 6')
-    return {"message": "sender stopped"}
+@router.post("/settings/change")
+def set_settings(settings:SenderSettings):
+    try:
+        data = {
+        "workingBotsAtSameTime":settings.workingBotsAtSameTime ,
+        "botMaxMessages": settings.botMaxMessages
+        }
+        # Save to a file
+        with open("senderSettings.json", "w") as file:
+            json.dump(data, file, indent=4)
+        return {"message":"Settings Updated"}
+    except:
+        return {"message":"Can't change the settings now"}
+
+@router.get("/settings/")
+def set_settings():
+    # Load existing JSON
+    with open("senderSettings.json", "r") as file:
+        settings = json.load(file)
+    return settings
+
+    

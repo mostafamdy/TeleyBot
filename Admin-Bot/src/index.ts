@@ -7,11 +7,13 @@ const bot = new TelegramBot(token, { polling: true });
 
 let firstNumber: number,
   secondNumber = 0;
-let longMessage=false
+let longMessage=false;
 let message="";
 let _chatId=0;
-let isDeleteGroup=false
-
+let isDeleteGroup=false;
+let isChangeSettings=0;
+let botsThreads=0;
+let botsMaxMessages=0;
 bot.onText(/\/start/, async msg => {
   isDeleteGroup=false
   const { data } = await api.getCount();
@@ -89,6 +91,34 @@ bot.onText(/\/delete_group/, async msg => {
   );
 });
 
+bot.onText(/\/show_settings/, async msg => {
+  const chatId = msg.chat.id;
+
+  const result = await api.getSenderSettings();
+  bot.sendMessage(chatId,result);
+
+});
+
+
+bot.onText(/\/change_settings/, async msg => {
+  const chatId = msg.chat.id;
+  const { data } = await api.getCount();
+  const reply="Choose bots' speed. \nEnter a number from 1 to "+data.unavailable+"\n*Note*\n High number will increase the bots banned possibality\n";
+  isChangeSettings=1;
+  bot.sendMessage(chatId,reply);
+
+});
+
+
+bot.onText(/\/delete_group/, async msg => {
+  const chatId = msg.chat.id;
+  isDeleteGroup=true
+  bot.sendMessage(
+    chatId,
+    'Enter Group ID',
+  );
+});
+
 bot.on('message', async msg => {
   const chatId = msg.chat.id;
   //console.log("chat id"+chatId)
@@ -102,6 +132,22 @@ bot.on('message', async msg => {
     console.log(result)
     bot.sendMessage(chatId,result['message']);
   }
+  if(isChangeSettings==1){
+    botsThreads=Number(text)
+    const reply="Now choose bots' Time before taking a rest . \nEnter a number of messages The bot will send before taking the rest and changing to another bot to work";
+    isChangeSettings=2;
+    bot.sendMessage(chatId,reply);
+  }
+
+  if(isChangeSettings==2){
+    botsMaxMessages = Number(text)
+    const reply="Great each bot now will work from "+3*botsMaxMessages+"sec to"+5*botsMaxMessages+"sec then we move to next bot ";
+    isChangeSettings=3;
+    bot.sendMessage(chatId,reply);
+    const result = await api.changeSenderSettings(botsThreads,botsMaxMessages)
+    bot.sendMessage(chatId,result['message']);
+  }
+
   if (text?.match(/^\d+,\d+$/)) {
     //validate the input
 

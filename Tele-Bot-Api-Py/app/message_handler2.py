@@ -52,7 +52,7 @@ async def send_message(breakPointIndex):
                 continue
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
-            for _ in range(5):
+            for _ in range(25):
                 if len(groups_status[bot.id]['AvailableGroups']) == 0:
                     groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
                     groups_status[bot.id]['VisitedGroups'] = []
@@ -64,14 +64,12 @@ async def send_message(breakPointIndex):
 
                 random_group = groups_status[bot.id]['AvailableGroups'].pop(random_index)  
                 
-                date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
-                #print(date_string)
-                print("\nBot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID ("+str(_)+")\nmessage "+ bot.message+"\n")
-
-                ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
+                # date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
+                # "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message
+                ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id),bot.message)
                 if ret == -1:
                     isBanned = await telegram_bot.is_banned()
-                    print(f"Bot is Banned {isBanned}")
+                    print(f"Bot is Banned ({bot.id}) : {isBanned}")
                     if isBanned:
                         db_handler.ban(bot.id)
 
@@ -79,13 +77,12 @@ async def send_message(breakPointIndex):
                     break
 
                 groups_status[bot.id]['VisitedGroups'].append(random_group)
-
-                print(f"({bot.id}) groups visited {len(groups_status[bot.id]['VisitedGroups'])}")
-                print(f"({bot.id}) groups available {len(groups_status[bot.id]['AvailableGroups'])}")
                 await asyncio.sleep(random.uniform(3,5))
 
-
 working_bots_at_same_time = 1
+# bot will released after 25 message and then 
+# message_speed_range from 1 to working bots count if you want more speed add more bots
+# NOTE (it's dangerous to use full speed we recomened to use half speed)
 
 # Main coroutine
 async def main():
