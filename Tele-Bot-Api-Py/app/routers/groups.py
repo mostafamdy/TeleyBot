@@ -77,8 +77,19 @@ async def join_group(link: str, bot_id: int):
             "error": str(e)
         })
 
+
+@router.get("/testtt")
+async def join_group():
+    
+    db_bot = db_handler.get_all()
+    telegram_bot = TelegramBot(db_bot[0].session)
+    info = await telegram_bot.get_group_info_by_link("https://t.me/addlist/gaOOVvhk9Xk5ZGMy")
+    print(info)
+    return info
+
 class JoinGroupALL(BaseModel):
     link:str
+
 
 @router.post("/join/all")
 async def join_group(data: JoinGroupALL):
@@ -115,6 +126,11 @@ async def join_group(data: JoinGroupALL):
                 print(e)
                 continue
         
+        if is_groub_saved == False:
+            telegram_bot = TelegramBot(db_bot[0].session)
+            info = await telegram_bot.get_group_info_by_link(data.link)
+            db_handler.add_group(data.link, info['id'], info['title'])
+
         return {"message": result.get('message')}
     
     except Exception as e:
@@ -137,27 +153,34 @@ async def join_groups_list(data: JoinGroupALL):
             except Exception as e:
                 print(e)
                 continue
+            
             # Join Groups
             try:
                 if is_groub_saved == False:
+                    saved_groups = db_handler.get_all_groups()
+                    saved_groups = [g.id for g in saved_groups]
                     # Save Groups
-                    groups_before = await telegram_bot.get_groups()
-                    groups_before = [g.title for g in groups_before]
+                    #groups_before = await telegram_bot.get_groups()
+                    #groups_before = [g.title for g in groups_before]
+                    
                     result = await telegram_bot.join_group(data.link)
+                    
                     groups_after = await telegram_bot.get_groups()
-                    for group in groups_after:
-                        if group.title in groups_before:
+                    groups_after = [g.id for g in groups_after]
+                    for g in groups_after:
+                        if g in saved_groups:
                             continue
                         #info = await telegram_bot.get_group_info_by_link(data.link)
-                        db_handler.add_group(None,group.id,group.title)
+                        db_handler.add_group(None,g.id,g.title)
                     is_groub_saved = True
                 else:
                     result = await telegram_bot.join_group(data.link)
                 await telegram_bot.disconnect()
+            
             except Exception as e:
                 print(e)
                 continue
-        
+
         return {"message": result.get('message')}
     
     except Exception as e:
