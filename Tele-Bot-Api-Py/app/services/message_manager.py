@@ -16,6 +16,7 @@ class MessageManager:
             await self.client.send_message(group, message)
             
         except Exception as e:
+             print(e)
              HTTPException(status_code=500, detail={
                 "message": "Error sending message",
                 "error": str(e)
