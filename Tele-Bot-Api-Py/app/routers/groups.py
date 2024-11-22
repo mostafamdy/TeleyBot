@@ -132,6 +132,7 @@ async def join_group(data: JoinGroupALL):
     finally:
         if is_groub_saved == False:
             telegram_bot = TelegramBot(db_bot[-1].session)
+            await telegram_bot.connect()
             info = await telegram_bot.get_group_info_by_link(data.link)
             db_handler.add_group(data.link, info['id'], info['title'])
 
