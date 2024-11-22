@@ -11,9 +11,11 @@ let longMessage=false;
 let message="";
 let _chatId=0;
 let isDeleteGroup=false;
+
 let isChangeSettings=0;
-let botsThreads=0;
-let botsMaxMessages=0;
+let botsThreads=-1;
+let botsMaxMessages=-1;
+
 bot.onText(/\/start/, async msg => {
   isDeleteGroup=false
   const { data } = await api.getCount();
@@ -95,7 +97,8 @@ bot.onText(/\/show_settings/, async msg => {
   const chatId = msg.chat.id;
 
   const result = await api.getSenderSettings();
-  bot.sendMessage(chatId,result);
+  
+  bot.sendMessage(chatId,JSON.stringify(result,null, 2));
 
 });
 
@@ -132,20 +135,23 @@ bot.on('message', async msg => {
     console.log(result)
     bot.sendMessage(chatId,result['message']);
   }
-  if(isChangeSettings==1){
+  if(isChangeSettings==1 && botsThreads == -1){
     botsThreads=Number(text)
-    const reply="Now choose bots' Time before taking a rest . \nEnter a number of messages The bot will send before taking the rest and changing to another bot to work";
+    const reply="Now choose bots' Time before taking a rest . \n\nEnter a number of messages The bot will send before taking the rest and changing to another bot to work";
     isChangeSettings=2;
     bot.sendMessage(chatId,reply);
   }
 
-  if(isChangeSettings==2){
+  else if(isChangeSettings == 2 && botsMaxMessages == -1){
     botsMaxMessages = Number(text)
-    const reply="Great each bot now will work from "+3*botsMaxMessages+"sec to"+5*botsMaxMessages+"sec then we move to next bot ";
+    const reply="Great each bot now will work from "+3*botsMaxMessages+" sec to"+5*botsMaxMessages+" sec then we move to next bot ";
     isChangeSettings=3;
     bot.sendMessage(chatId,reply);
     const result = await api.changeSenderSettings(botsThreads,botsMaxMessages)
     bot.sendMessage(chatId,result['message']);
+    botsMaxMessages=-1;
+    botsThreads=-1;
+    isChangeSettings=0;
   }
 
   if (text?.match(/^\d+,\d+$/)) {

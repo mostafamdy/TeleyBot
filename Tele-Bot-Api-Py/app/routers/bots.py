@@ -4,6 +4,7 @@ import os
 from fastapi import APIRouter
 from pydantic import BaseModel
 import json
+from fastapi.responses import JSONResponse
 
 try:
     from app.services.telegram_bot import TelegramBot
@@ -30,8 +31,8 @@ def get_bots():
 @router.get("/count/")
 def get_bots_count():
     bots = db_handler.get_all()
-    available_bots = [bot for bot in bots if not bot.message_id]
-    unavailable_bots = [bot for bot in bots if bot.message_id]
+    available_bots = [bot for bot in bots if not bot.message]
+    unavailable_bots = [bot for bot in bots if bot.message]
     banned_bots = db_handler.get_all_banned()
 
     return {
@@ -185,7 +186,7 @@ class SenderSettings(BaseModel):
 
 
 @router.post("/settings/change")
-def set_settings(settings:SenderSettings):
+def save_settings(settings:SenderSettings):
     try:
         data = {
         "workingBotsAtSameTime":settings.workingBotsAtSameTime ,
@@ -203,6 +204,7 @@ def set_settings():
     # Load existing JSON
     with open("senderSettings.json", "r") as file:
         settings = json.load(file)
-    return settings
+    
+    return JSONResponse(content=settings)
 
     

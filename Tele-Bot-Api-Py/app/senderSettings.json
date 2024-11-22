@@ -1,4 +1,4 @@
 {
-    "workingBotsAtSameTime":2 ,
-    "botMaxMessages":25
+    "workingBotsAtSameTime": 0,
+    "botMaxMessages": 50
 }
