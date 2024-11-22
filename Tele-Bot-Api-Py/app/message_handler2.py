@@ -47,7 +47,7 @@ async def send_message(breakPointIndex):
 
     blocked_bots=[]
     while True:
-        for bot in enumerate(_bots):
+        for bot in _bots:
             if bot.id in blocked_bots:
                 continue
             telegram_bot = TelegramBot(bot.session)
