@@ -36,8 +36,7 @@ with open("senderSettings.json", "r") as file:
 
 async def send_message(breakPointIndex):
     startPoint = int(len(groups_status)/working_bots_at_same_time) * breakPointIndex
-    if startPoint>len(groups_status):
-        return
+
     _bots = bots[startPoint:]+bots[:startPoint]
 
     blocked_bots=[]
