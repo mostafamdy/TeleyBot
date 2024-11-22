@@ -29,7 +29,7 @@ class BannedBot(Base):
     bot_created_at = Column(String, nullable=True)
     created_at = Column(String, nullable=True,
                         default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
+    session =  Column(String)
 class GroupsData(Base):
     __tablename__ = "groups"
     id = Column(String,primary_key=True,)#Integer,  index=True)

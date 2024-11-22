@@ -152,7 +152,7 @@ class DbHandler:
             if bot:
                 self.db.delete(bot)
                 banned_bot = BannedBot(
-                    phone=bot.phone, bot_created_at=bot.created_at)
+                    phone=bot.phone, bot_created_at=bot.created_at,session=bot.session)
                 self.db.add(banned_bot)
                 self.db.commit()
         except Exception as e:
