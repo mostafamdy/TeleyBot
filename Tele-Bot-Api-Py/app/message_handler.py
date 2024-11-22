@@ -87,9 +87,11 @@ working_bots_at_same_time = settings['workingBotsAtSameTime']
 # bot will released after 25 message and then 
 # message_speed_range from 1 to working bots count if you want more speed add more bots
 # NOTE (it's dangerous to use full speed we recomened to use half speed)
-
+if working_bots_at_same_time>len(groups_status):
+    working_bots_at_same_time=len(groups_status)
 # Main coroutine
 async def main():
+
     tasks = [send_message(i) for i in range(working_bots_at_same_time)]  # Create 3 async tasks
     await asyncio.gather(*tasks)
 
