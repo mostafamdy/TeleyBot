@@ -45,11 +45,14 @@ async def send_message(breakPointIndex):
     print([b.id for b in _bots])
     print(len(_bots))
 
+    blocked_bots=[]
     while True:
-        for bot_indx,bot in enumerate(_bots):
+        for bot in enumerate(_bots):
+            if bot.id in blocked_bots:
+                continue
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
-            for _ in range(25):
+            for _ in range(10):
                 if len(groups_status[bot.id]['AvailableGroups']) == 0:
                     groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
                     groups_status[bot.id]['VisitedGroups'] = []
@@ -67,7 +70,7 @@ async def send_message(breakPointIndex):
 
                 ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
                 if ret == -1:
-                    _bots.pop(bot_indx)
+                    blocked_bots.append(bot.id)
                     break
 
                 groups_status[bot.id]['VisitedGroups'].append(random_group)
