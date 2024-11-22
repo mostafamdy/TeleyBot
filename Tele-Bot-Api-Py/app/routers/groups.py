@@ -135,7 +135,7 @@ async def join_group(data: JoinGroupALL):
             await telegram_bot.connect()
             info = await telegram_bot.get_group_info_by_link(data.link)
             db_handler.add_group(data.link, info['id'], info['title'])
-
+            await telegram_bot.disconnect()
         return {"message": "All bots joined group"}
 
 
@@ -145,8 +145,7 @@ async def join_groups_list(data: JoinGroupALL):
         db_bot = db_handler.get_all()
         print("All bots", len(db_bot))
         is_groub_saved = False
-
-        for indx,bot in enumerate(db_bot):
+        for indx, bot in enumerate(db_bot):
             telegram_bot = TelegramBot(bot.session)
             try:
                 await telegram_bot.connect()
@@ -164,7 +163,6 @@ async def join_groups_list(data: JoinGroupALL):
                     #groups_before = [g.title for g in groups_before]
                     
                     result = await telegram_bot.join_group(data.link)
-                    
                     groups_after = await telegram_bot.get_groups()
                     groups_after = [g.id for g in groups_after]
                     for g in groups_after:
@@ -184,7 +182,24 @@ async def join_groups_list(data: JoinGroupALL):
     except Exception as e:
         print(e)
         return {"message": f"ERROR {e}"}
+    
     finally:
+        if is_groub_saved == False:
+            telegram_bot = TelegramBot(bot.session)
+            await telegram_bot.connect()
+            
+            saved_groups = db_handler.get_all_groups()
+            saved_groups = [g.id for g in saved_groups]
+
+            groups_after = await telegram_bot.get_groups()
+            groups_after = [g.id for g in groups_after]
+            for g in groups_after:
+                if g in saved_groups:
+                    continue
+                db_handler.add_group(None,g.id,g.title)
+                
+            await telegram_bot.disconnect()
+    
         return {"message": "All bots joined group"}
 
 
