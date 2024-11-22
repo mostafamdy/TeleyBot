@@ -77,6 +77,17 @@ def send_message(message:Message):
     except Exception as e:
         return {"message": 'Error updating message_id', 'error': str(e)}
 
+@router.get("/stopSending/")
+def stop_sending():
+    try:
+        bots = db_handler.get_all()
+        for bot in bots:
+            db_handler.update_message(bot.id, None)
+        os.system("sudo systemctl restart massage")
+        return {"message": "message sent"}
+    except Exception as e:
+        return {"message": 'Error updating message_id', 'error': str(e)}
+
 
 @router.delete("/{bot_id}/")
 def delete_bot(bot_id: int):

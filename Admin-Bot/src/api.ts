@@ -31,6 +31,16 @@ export default {
     }
   },
 
+  async stop_sending() {
+    try {
+      const response = await fetch(`${BASE_URL}/bots/stopSending/`);
+      
+      return "Done";
+    } catch (error) {
+      console.error('Error:', error);
+      return error;
+    }
+  },
 
   async joinGroup(link:string) {
     try {

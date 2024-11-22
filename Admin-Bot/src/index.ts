@@ -105,7 +105,13 @@ bot.onText(/\/show_settings/, async msg => {
 
 });
 
+bot.onText(/\/stop_all_bots/, async msg => {
+  state = "stop_all"
+  const chatId = msg.chat.id;
+  const result = await api.stop_sending();
+  bot.sendMessage(chatId,"Done");
 
+});
 bot.onText(/\/change_settings/, async msg => {
   state = "change_settings"
   const chatId = msg.chat.id;
