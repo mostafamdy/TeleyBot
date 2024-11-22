@@ -1,5 +1,6 @@
 import asyncio
 from datetime import datetime
+import json
 import random
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
@@ -23,27 +24,20 @@ bots = db_handler.get_bots_have_message()
 groups = db_handler.get_all_groups()
 
 groups_status={}
+
 for b in bots:
     groups_status[b.id]={"AvailableGroups":copy.deepcopy(groups),"VisitedGroups":[]}
+
 print([b.id for b in bots])
-print(groups_status)
 
-"""
-3 
-
-1 - - - - 1 - - - - 1 - - - -
-
-bots/3
+with open("senderSettings.json", "r") as file:
+    settings = json.load(file)
 
 
-"""
 async def send_message(breakPointIndex):
     startPoint = int(len(groups_status)/working_bots_at_same_time) * breakPointIndex
 
     _bots = bots[startPoint:]+bots[:startPoint]
-    print(startPoint)
-    print([b.id for b in _bots])
-    print(len(_bots))
 
     blocked_bots=[]
     while True:
@@ -52,7 +46,7 @@ async def send_message(breakPointIndex):
                 continue
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
-            for _ in range(25):
+            for _ in range(settings['botMaxMessages']):
                 if len(groups_status[bot.id]['AvailableGroups']) == 0:
                     groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
                     groups_status[bot.id]['VisitedGroups'] = []
@@ -79,7 +73,7 @@ async def send_message(breakPointIndex):
                 groups_status[bot.id]['VisitedGroups'].append(random_group)
                 await asyncio.sleep(random.uniform(3,5))
 
-working_bots_at_same_time = 1
+working_bots_at_same_time = settings['workingBotsAtSameTime']
 # bot will released after 25 message and then 
 # message_speed_range from 1 to working bots count if you want more speed add more bots
 # NOTE (it's dangerous to use full speed we recomened to use half speed)

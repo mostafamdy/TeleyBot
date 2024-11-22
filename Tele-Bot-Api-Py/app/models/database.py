@@ -20,6 +20,7 @@ class Bot(Base):
     created_at = Column(String, nullable=True,
                         default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     message =  Column(String, nullable=True)
+    start_sending_at = Column(String, nullable=True)
 
 class BannedBot(Base):
     __tablename__ = "banned_bots"
