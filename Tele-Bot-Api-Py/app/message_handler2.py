@@ -68,7 +68,8 @@ async def send_message(breakPointIndex):
                 ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
                 if ret == -1:
                     _bots.pop(bot_indx)
-                    
+                    break
+
                 groups_status[bot.id]['VisitedGroups'].append(random_group)
 
                 print(f"({bot.id}) groups visited {len(groups_status[bot.id]['VisitedGroups'])}")
