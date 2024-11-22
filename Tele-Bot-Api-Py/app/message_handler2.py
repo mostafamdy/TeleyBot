@@ -52,7 +52,7 @@ async def send_message(breakPointIndex):
                 continue
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
-            for _ in range(10):
+            for _ in range(5):
                 if len(groups_status[bot.id]['AvailableGroups']) == 0:
                     groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
                     groups_status[bot.id]['VisitedGroups'] = []
@@ -71,6 +71,7 @@ async def send_message(breakPointIndex):
                 ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id), "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message)
                 if ret == -1:
                     isBanned = await telegram_bot.is_banned()
+                    print(f"Bot is Banned {isBanned}")
                     if isBanned:
                         db_handler.ban(bot.id)
 
