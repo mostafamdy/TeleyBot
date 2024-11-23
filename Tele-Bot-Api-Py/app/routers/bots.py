@@ -75,21 +75,21 @@ async def send_message(message:Message):
             try:
                 bot_client = TelegramBot(bot.session)
                 await bot_client.connect()
-
                 last_message_id = await bot_client.get_last_message_id()
+                db_handler.update_message_id(bot.id, last_message_id)
                 await bot_client.disconnect()
-                break
-            except:
+                
+            except Exception as e:
+                print("error")
+                print(e)
                 continue
         
         if last_message_id is None:
             return {"message": "can't send this message check bots count"}
         
-        for bot in bots:
-            db_handler.update_message_id(bot.id, last_message_id)
-        
         #os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
+    
     except Exception as e:
         return {"message": 'Error updating message_id', 'error': str(e)}
 
@@ -99,7 +99,7 @@ def stop_sending():
         bots = db_handler.get_all()
         for bot in bots:
             db_handler.update_message_id(bot.id, None)
-        os.system("sudo systemctl restart massage")
+        #os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     except Exception as e:
         return {"message": 'Error updating message_id', 'error': str(e)}

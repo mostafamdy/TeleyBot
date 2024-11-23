@@ -11,7 +11,7 @@ class MessageManager:
         try:
             # Search for the group by ID and title
             #group = await self.client.get_entity(group_id)
-            #await self.client.send_message(group, message,)
+            #await self.client.send_message(group_id, "message",)
             await self.client.forward_messages(group_id,message,-4535626904)
             return 0
         
@@ -72,3 +72,11 @@ class MessageManager:
                 "message": "Error forwarding message",
                 "error": str(e)
             })
+
+    async def get_last_message_id(self):
+        messages = await self.client.get_messages(-4535626904, limit=1)
+        if messages:
+            last_message_id = messages[0].id
+            return last_message_id
+        else:
+            return None
