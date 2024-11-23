@@ -68,6 +68,7 @@ async def send_message(breakPointIndex):
 
                 random_group = groups_status[bot.id]['AvailableGroups'].pop(random_index)  
                 print(f"group id {random_group.id}")
+                print(type(random_group.id))
                 # date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
                 # "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message
                 if random_group.id == -4535626904 or random_group.id == 4535626904:
