@@ -31,8 +31,8 @@ def get_bots():
 @router.get("/count/")
 def get_bots_count():
     bots = db_handler.get_all()
-    available_bots = [bot for bot in bots if not bot.message]
-    unavailable_bots = [bot for bot in bots if bot.message]
+    available_bots = [bot for bot in bots if not bot.message_id]
+    unavailable_bots = [bot for bot in bots if bot.message_id]
     banned_bots = db_handler.get_all_banned()
 
     return {
