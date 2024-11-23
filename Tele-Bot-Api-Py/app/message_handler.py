@@ -71,7 +71,7 @@ async def send_message(breakPointIndex):
                 print(type(random_group.id))
                 # date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
                 # "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message
-                if random_group.id == -4535626904 or random_group.id == 4535626904:
+                if random_group.id == "-4535626904" or random_group.id == "4535626904":
                     print("In IF")
                     groups_status[bot.id]['VisitedGroups'].append(random_group)
                     continue
