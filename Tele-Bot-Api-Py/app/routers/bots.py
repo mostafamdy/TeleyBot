@@ -64,14 +64,14 @@ def update_message_id(message_id: int, update_data: UpdateMessageId):
 class Message(BaseModel):
     start: int
     end: int
-    message:str
+    messageID:int
 
 @router.post("/sendMessage/")
 def send_message(message:Message):
     try:
         bots = db_handler.get_all()[message.start-1:message.end]
         for bot in bots:
-            db_handler.update_message_id(bot.id, message.message)
+            db_handler.update_message_id(bot.id, message.messageID)
         os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     except Exception as e:

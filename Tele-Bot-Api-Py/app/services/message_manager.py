@@ -12,7 +12,7 @@ class MessageManager:
             # Search for the group by ID and title
             #group = await self.client.get_entity(group_id)
             #await self.client.send_message(group, message,)
-            await self.client.forward_messages(group_id,message,-4594516595)
+            await self.client.forward_messages(group_id,message,-4535626904)
             return 0
         
         except Exception as e:

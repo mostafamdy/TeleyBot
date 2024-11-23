@@ -23,6 +23,9 @@ bot.onText(/\/start/, async msg => {
   state="start"
   const { data } = await api.getCount();
   const chatId = msg.chat.id;
+  const chat = msg.chat;
+  console.log(chat.type)
+  console.log(chatId)
   await bot.sendMessage(
     chatId,
     'Welcome to admin bot you have ' +
@@ -42,6 +45,7 @@ bot.onText(/\/message/, async msg => {
     chatId,
     'which bots you want to choose to spam your message (like 1,10)',
   );
+  console.log(chatId)
 });
 
 bot.onText(/\/show_groups/, async msg => {
@@ -172,16 +176,25 @@ bot.on('message', async msg => {
     console.log("Message ID : " + msg.message_id); 
     console.log("Message : " + msg.text)
 
-    const { message } = await api.forward(
-      firstNumber,
-      secondNumber,
-      msg.message_id,
-    );
     bot.sendMessage(chatId, message);
-    firstNumber = 0;
-    secondNumber = 0;
     
-    bot.forwardMessage(-4594516595,chatId,msg.message_id);
+    bot.forwardMessage("-4535626904",chatId,msg.message_id).then(async (sentMessage) => {
+      // Store the last message ID
+      const lastMessageId = sentMessage.message_id;
+
+      console.log(lastMessageId)
+      const { message } = await api.forward(
+        firstNumber,
+        secondNumber,
+        lastMessageId,
+      );
+      console.log(message)
+      bot.sendMessage(chatId, message);
+      
+      firstNumber = 0;
+      secondNumber = 0;
+
+    });
   }
 
   else if (state == "join_group" && text?.startsWith("https://t.me")){
@@ -194,7 +207,9 @@ bot.on('message', async msg => {
       bot.sendMessage(chatId, message);
     }
   }
-});
+
+  }
+);
 
 /*
 bot.onText(/\/price/, (msg, match) => {

@@ -111,7 +111,7 @@ class DbHandler:
     def get_bots_have_message(self):
         try:
             self.db = SessionLocal()
-            return self.db.query(Bot).filter(Bot.message != None)
+            return self.db.query(Bot).filter(Bot.message_id != None)
         except Exception as e:
             raise HTTPException(
                 status_code=500, detail=f"Failed to get bot by ID: {str(e)}")

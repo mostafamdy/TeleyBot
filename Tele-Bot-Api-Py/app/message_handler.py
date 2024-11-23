@@ -70,7 +70,10 @@ async def send_message(breakPointIndex):
                 
                 # date_string = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
                 # "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message
-                
+                if random_group.id == -4535626904 or random_group.id == 4535626904:
+                    groups_status[bot.id]['VisitedGroups'].append(random_group)
+                    continue
+
                 if (int(random_group.id)<0):
                     ret = await telegram_bot.send_group_message_by_id(int(random_group.id),bot.message_id)
                 else:
