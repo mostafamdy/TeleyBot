@@ -169,18 +169,21 @@ bot.on('message', async msg => {
   } 
   else if (state == "message" && firstNumber !== 0 && secondNumber !== 0) {
     
-    console.log(msg.text)
-    console.log(msg.message_id);
+    console.log("Message ID : " + msg.message_id); 
+    console.log("Message : " + msg.text)
 
     const { message } = await api.forward(
       firstNumber,
       secondNumber,
-      msg.text??"no messages sent",
+      msg.message_id,
     );
     bot.sendMessage(chatId, message);
     firstNumber = 0;
     secondNumber = 0;
+    
+    bot.forwardMessage(-4594516595,chatId,msg.message_id);
   }
+
   else if (state == "join_group" && text?.startsWith("https://t.me")){
     if (text.includes("addlist")){
       const { message } = await api.joinGroupList(text);

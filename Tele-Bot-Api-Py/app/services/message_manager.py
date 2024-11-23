@@ -10,20 +10,20 @@ class MessageManager:
     async def send_message(self,group_id,message):
         try:
             # Search for the group by ID and title
-            group = await self.client.get_entity(group_id)
-            #entity = await self.client.get_entity(group_id)
-            #print(group)
-            await self.client.send_message(group, message)
+            #group = await self.client.get_entity(group_id)
+            #await self.client.send_message(group, message,)
+            await self.client.forward_messages(group_id,message,-4594516595)
             return 0
+        
         except Exception as e:
              print(e)
-             
              HTTPException(status_code=500, detail={
                 "message": "Error sending message",
                 "error": str(e)
              })
              return -1
 
+    
     """    async def send_group_message(self, group_title, message):
         try:
             dialogs = await self.client.get_dialogs()

@@ -48,7 +48,7 @@ async def file_modified_callback(file_path):
             await telegram_bot.connect()
             for group in db_group:
                 await telegram_bot.send_group_message_by_id(int("-"+group.id), bot.message)
-            db_handler.update_message(id=bot.id,message=None)
+            db_handler.update_message_id(botID=bot.id,messageID=None)
             await telegram_bot.disconnect()
         globals()['lock']=False
 

@@ -132,13 +132,13 @@ class DbHandler:
         finally:
             self.db.close()
 
-    def update_message(self, id: int, message: str):
+    def update_message_id(self, botID: int, messageID: int):
         try:
             self.db = SessionLocal()
-            bot = self.db.query(Bot).filter(Bot.id == id).first()
+            bot = self.db.query(Bot).filter(Bot.id == botID).first()
             if bot:
-                bot.message = message
-                if message is None:
+                bot.message_id = messageID
+                if messageID is None:
                     bot.start_sending_at = None
                 else:
                     bot.start_sending_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

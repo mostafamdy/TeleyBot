@@ -49,17 +49,18 @@ async def send_message(breakPointIndex):
             working_hours = time_diff.total_seconds() / 3600 
             
             if working_hours>=24:
-                db_handler.update_message(bot.id,None)
+                db_handler.update_message_id(bot.id,None)
                 blocked_bots.append(bot.id)
                 continue
 
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
+
             for _ in range(settings['botMaxMessages']):
+
                 if len(groups_status[bot.id]['AvailableGroups']) == 0:
                     groups_status[bot.id]['AvailableGroups'] = groups_status[bot.id]['VisitedGroups']
-                    groups_status[bot.id]['VisitedGroups'] = []
-                
+                    groups_status[bot.id]['VisitedGroups'] = []      
                 try:
                     random_index = random.randint(0, len(groups_status[bot.id]['AvailableGroups'])-1)
                 except:
@@ -71,9 +72,9 @@ async def send_message(breakPointIndex):
                 # "Bot ("+str(bot.id)+") \ntime "+date_string+"\nmessageID"+str(_)+"\nmessage "+ bot.message
                 
                 if (int(random_group.id)<0):
-                    ret = await telegram_bot.send_group_message_by_id(int(random_group.id),bot.message)
+                    ret = await telegram_bot.send_group_message_by_id(int(random_group.id),bot.message_id)
                 else:
-                    ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id),bot.message)
+                    ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id),bot.message_id)
 
                 if ret == -1:
                     isBanned = await telegram_bot.is_banned()

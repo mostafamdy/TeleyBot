@@ -71,7 +71,7 @@ def send_message(message:Message):
     try:
         bots = db_handler.get_all()[message.start-1:message.end]
         for bot in bots:
-            db_handler.update_message(bot.id, message.message)
+            db_handler.update_message_id(bot.id, message.message)
         os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     except Exception as e:
@@ -82,7 +82,7 @@ def stop_sending():
     try:
         bots = db_handler.get_all()
         for bot in bots:
-            db_handler.update_message(bot.id, None)
+            db_handler.update_message_id(bot.id, None)
         os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     except Exception as e:

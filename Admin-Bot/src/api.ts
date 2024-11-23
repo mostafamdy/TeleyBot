@@ -13,15 +13,13 @@ export default {
     }
   },
 
-  async forward(start: number, end: number, message: string) {
+  async forward(start: number, end: number, messageID: number) {
     try {
       const response = await fetch(`${BASE_URL}/bots/sendMessage/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ start, end,message }),
+        body: JSON.stringify({ start, end, messageID }),
       });
-
-      console.log('start:', start, ', last: ', end, 'id:', message);
       const data = await response.json();
       console.log(data);
       return data;
