@@ -72,6 +72,7 @@ def send_message(message:Message):
         bots = db_handler.get_all()[message.start-1:message.end]
         for bot in bots:
             db_handler.update_message_id(bot.id, message.messageID)
+        
         os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     except Exception as e:
