@@ -67,11 +67,26 @@ class Message(BaseModel):
     messageID:int
 
 @router.post("/sendMessage/")
-def send_message(message:Message):
+async def send_message(message:Message):
     try:
         bots = db_handler.get_all()[message.start-1:message.end]
+        last_message_id = None
         for bot in bots:
-            db_handler.update_message_id(bot.id, message.messageID)
+            try:
+                bot_client = TelegramBot(bot.session)
+                await bot_client.connect()
+
+                last_message_id = await bot_client.get_last_message_id()
+                await bot_client.disconnect()
+                break
+            except:
+                continue
+        
+        if last_message_id is None:
+            return {"message": "can't send this message check bots count"}
+        
+        for bot in bots:
+            db_handler.update_message_id(bot.id, last_message_id)
         
         #os.system("sudo systemctl restart massage")
         return {"message": "message sent"}

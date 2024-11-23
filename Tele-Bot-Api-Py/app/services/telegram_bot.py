@@ -119,3 +119,11 @@ class TelegramBot:
 
     def save_session_string(self):
         return self.connection_manager.save_session_string()
+    
+    async def get_last_message_id(self):
+        messages = await self.client.get_messages("-4535626904", limit=1)
+        if messages:
+            last_message_id = messages[0].id
+            return last_message_id
+        else:
+            return None
