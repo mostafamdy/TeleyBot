@@ -74,21 +74,23 @@ async def send_message(breakPointIndex):
                     groups_status[bot.id]['VisitedGroups'].append(random_group)
                     continue
 
-                if (int(random_group.id)<0):
-                    ret = await telegram_bot.send_group_message_by_id(int(random_group.id),bot.message_id)
                 else:
-                    ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id),bot.message_id)
+                    
+                    if (int(random_group.id)<0):
+                        ret = await telegram_bot.send_group_message_by_id(int(random_group.id),bot.message_id)
+                    else:
+                        ret = await telegram_bot.send_group_message_by_id(int("-"+random_group.id),bot.message_id)
 
-                if ret == -1:
-                    isBanned = await telegram_bot.is_banned()
-                    print(f"Bot is Banned ({bot.id}) : {isBanned}")
-                    if isBanned:
-                        db_handler.ban(bot.id)
-                        blocked_bots.append(bot.id)
-                        break
+                    if ret == -1:
+                        isBanned = await telegram_bot.is_banned()
+                        print(f"Bot is Banned ({bot.id}) : {isBanned}")
+                        if isBanned:
+                            db_handler.ban(bot.id)
+                            blocked_bots.append(bot.id)
+                            break
 
-                groups_status[bot.id]['VisitedGroups'].append(random_group)
-                await asyncio.sleep(random.uniform(2,5))
+                    groups_status[bot.id]['VisitedGroups'].append(random_group)
+                    await asyncio.sleep(random.uniform(2,5))
 
 working_bots_at_same_time = settings['workingBotsAtSameTime']
 # bot will released after 25 message and then 
