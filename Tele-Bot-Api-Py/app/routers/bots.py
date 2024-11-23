@@ -87,7 +87,7 @@ async def send_message(message:Message):
         if last_message_id is None:
             return {"message": "can't send this message check bots count"}
         
-        #os.system("sudo systemctl restart massage")
+        os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     
     except Exception as e:
@@ -99,7 +99,7 @@ def stop_sending():
         bots = db_handler.get_all()
         for bot in bots:
             db_handler.update_message_id(bot.id, None)
-        #os.system("sudo systemctl restart massage")
+        os.system("sudo systemctl restart massage")
         return {"message": "message sent"}
     except Exception as e:
         return {"message": 'Error updating message_id', 'error': str(e)}
