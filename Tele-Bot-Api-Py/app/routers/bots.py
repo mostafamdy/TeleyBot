@@ -74,8 +74,8 @@ async def send_message(message:Message):
         for bot in bots:
             bot_client = TelegramBot(bot.session)
             try:
-                await bot_client.connect()
-                # last_message_id = await bot_client.get_last_message_id()
+                # await bot_client.connect()
+                last_message_id = await bot_client.get_last_message_id()
                 # db_handler.update_message_id(bot.id, last_message_id)
                 # await bot_client.disconnect()
                 
