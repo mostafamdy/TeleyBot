@@ -26,13 +26,9 @@ groups = db_handler.get_all_groups()
 bot_group_status={}
 blocked_groups_per_bot = {}
 
-print(len(groups))
-
 for b in bots:
     bot_group_status[b.id]={"AvailableGroups":copy.deepcopy(groups),"VisitedGroups":[]}
     blocked_groups_per_bot[b.id]={"count":0,"groups":[]}
-
-print([b.id for b in bots])
 
 with open("senderSettings.json", "r") as file:
     settings = json.load(file)
@@ -54,13 +50,13 @@ async def send_message(breakPointIndex):
     while True:
         for bot in _bots:
             save_blocked_groups()
+            
             if bot.id in blocked_bots:
                 continue
 
             start_at = datetime.strptime(bot.start_sending_at, "%Y-%m-%d %H:%M:%S")
             time_diff = datetime.now() - start_at
             working_hours = time_diff.total_seconds() / 3600 
-            
             if working_hours>=24:
                 db_handler.update_message_id(bot.id,None)
                 blocked_bots.append(bot.id)
@@ -68,7 +64,7 @@ async def send_message(breakPointIndex):
 
             telegram_bot = TelegramBot(bot.session)
             await telegram_bot.connect()
-
+            
             for _ in range(settings['botMaxMessages']):
 
                 if len(bot_group_status[bot.id]['AvailableGroups']) == 0:
@@ -126,15 +122,16 @@ async def send_message(breakPointIndex):
                         print(ret)
                         
 
-                bot_group_status[bot.id]['VisitedGroups'].append(random_group)
+                bot_group_status[bot.id]['VisitedGroups'].append(random_group)    
                 await asyncio.sleep(random.uniform(2,5))
+
+            await telegram_bot.disconnect()
             
 working_bots_at_same_time = settings['workingBotsAtSameTime']
-# bot will released after 25 message and then 
-# message_speed_range from 1 to working bots count if you want more speed add more bots
-# NOTE (it's dangerous to use full speed we recomened to use half speed)
+
 if working_bots_at_same_time>len(bot_group_status):
     working_bots_at_same_time=len(bot_group_status)
+
 # Main coroutine
 async def main():
 

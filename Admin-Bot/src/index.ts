@@ -48,6 +48,24 @@ bot.onText(/\/message/, async msg => {
   console.log(chatId)
 });
 
+bot.onText(/\/groups_not_working/, async msg => {
+  state = "groups_not_working"
+  const chatId = msg.chat.id;
+  const data = await api.getNotWorkingGroups();
+  const dataString = "we have ("+data.length+") groups have problem in sending\n"+ JSON.stringify(data,null, 2)
+  if (dataString.length>4000){
+    longMessage=true;
+    message=dataString;
+    _chatId=chatId
+  }
+  else{
+    await bot.sendMessage(
+      chatId,
+      dataString
+    );
+  }
+
+});
 bot.onText(/\/show_groups/, async msg => {
   state = "show_groups"
   const chatId = msg.chat.id;

@@ -1,5 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+
+import json
+from collections import Counter
+
 try:
     from app.constants import ADMIN_GROUP
     from app.db_handler import DbHandler
@@ -242,3 +246,19 @@ async def forward_message_to_group(message_id: int, bot_id: int):
             "message": "Error forwarding message",
             "error": str(e)
         })
+
+
+@router.get("/notWorked/")
+async def groups_have_problems():
+    with open("blocked_groups.json", "r") as file:
+        blocked_groups = json.load(file)
+
+    all_ids = []
+    bot_ids = blocked_groups.keys()
+
+    for id in bot_ids:
+        for group_info in blocked_groups[id]['groups']:
+            all_ids.append(group_info['group_id'])
+
+    value_counts = Counter(all_ids)
+    return value_counts

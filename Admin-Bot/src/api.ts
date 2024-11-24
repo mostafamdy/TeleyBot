@@ -121,4 +121,15 @@ export default {
     }
   },
 
+  async getNotWorkingGroups() {
+    try {
+      const response = await fetch(`${BASE_URL}/groups/notWorked/`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return error;
+    }
+  },
+  
 };
