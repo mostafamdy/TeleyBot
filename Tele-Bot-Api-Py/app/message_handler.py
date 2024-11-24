@@ -90,6 +90,7 @@ async def send_message(breakPointIndex):
                         db_handler.ban(bot.id)
                         blocked_bots.append(bot.id)
                         break
+                    
                     elif "You're banned from sending messages in supergroups/channels" in ret:
                         print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
@@ -102,7 +103,7 @@ async def send_message(breakPointIndex):
                     elif "Could not find the input entity for PeerChannel" in ret:
                         print(ret)
                         continue
-                    
+
                 bot_group_status[bot.id]['VisitedGroups'].append(random_group)
                 await asyncio.sleep(random.uniform(2,5))
 

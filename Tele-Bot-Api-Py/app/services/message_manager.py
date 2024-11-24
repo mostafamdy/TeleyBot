@@ -21,6 +21,7 @@ class MessageManager:
                 "message": "Error sending message",
                 "error": str(e)
              })
+             print(f"ERROR TYPE {type(e)}")
              return e
 
     
