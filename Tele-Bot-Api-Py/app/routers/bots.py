@@ -72,12 +72,12 @@ async def send_message(message:Message):
         bots = db_handler.get_all()[message.start-1:message.end]
         last_message_id = None
         for bot in bots:
+            bot_client = TelegramBot(bot.session)
             try:
-                bot_client = TelegramBot(bot.session)
                 await bot_client.connect()
-                last_message_id = await bot_client.get_last_message_id()
-                db_handler.update_message_id(bot.id, last_message_id)
-                await bot_client.disconnect()
+                # last_message_id = await bot_client.get_last_message_id()
+                # db_handler.update_message_id(bot.id, last_message_id)
+                # await bot_client.disconnect()
                 
             except Exception as e:
                 print("error")
