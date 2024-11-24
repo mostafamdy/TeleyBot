@@ -52,7 +52,7 @@ bot.onText(/\/show_groups/, async msg => {
   state = "show_groups"
   const chatId = msg.chat.id;
   const data = await api.getGroups();
-  const dataString = "we have ("+data.length+") group"+ JSON.stringify(data,null, 2)
+  const dataString = "we have ("+data.length+") group\n"+ JSON.stringify(data,null, 2)
   if (dataString.length>4000){
     longMessage=true;
     message=dataString;
