@@ -97,22 +97,22 @@ async def send_message(breakPointIndex):
                         break
 
                     elif "You're banned from sending messages in supergroups/channels" in ret:
-                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
                         #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
                     
                     elif "You can't write in this chat" in ret:
-                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
                         #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
                     
                     elif "CHAT_SEND_PLAIN_FORBIDDEN" in ret:
-                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
                         #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
                     
                     elif "Could not find the input entity for PeerChannel" in ret:
-                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
                         print(ret)
                         continue
 
