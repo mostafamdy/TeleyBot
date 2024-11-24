@@ -123,7 +123,7 @@ async def send_message(breakPointIndex):
                         
 
                 bot_group_status[bot.id]['VisitedGroups'].append(random_group)    
-                await asyncio.sleep(random.uniform(2,5))
+                #await asyncio.sleep(random.uniform(2,5))
 
             await telegram_bot.disconnect()
             
