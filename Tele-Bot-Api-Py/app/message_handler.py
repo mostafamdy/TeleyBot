@@ -48,6 +48,7 @@ async def send_message(breakPointIndex):
 
     while True:
         for bot in _bots:
+            save_blocked_groups()
             if bot.id in blocked_bots:
                 continue
 
