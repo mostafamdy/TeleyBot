@@ -1,0 +1,722 @@
+{
+    "1": {
+        "count": 22,
+        "groups": [
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            },
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            },
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            },
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "Sweet weed",
+                "group_id": "-1002425405249"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            },
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            }
+        ]
+    },
+    "2": {
+        "count": 22,
+        "groups": [
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": "Sweet weed",
+                "group_id": "-1002425405249"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            },
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            },
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            }
+        ]
+    },
+    "4": {
+        "count": 21,
+        "groups": [
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            },
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            },
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            },
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            },
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            }
+        ]
+    },
+    "5": {
+        "count": 21,
+        "groups": [
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            },
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            }
+        ]
+    },
+    "6": {
+        "count": 21,
+        "groups": [
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            },
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            }
+        ]
+    },
+    "8": {
+        "count": 21,
+        "groups": [
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            },
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            },
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            }
+        ]
+    },
+    "9": {
+        "count": 21,
+        "groups": [
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            },
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            },
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            },
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            }
+        ]
+    },
+    "10": {
+        "count": 21,
+        "groups": [
+            {
+                "title": "...",
+                "group_id": "-1001413084231"
+            },
+            {
+                "title": "Dicknorules",
+                "group_id": "-1001357924203"
+            },
+            {
+                "title": "\ud835\udde7\ud835\uddea\ud835\udddc\ud835\uddeb \ud835\udded\ud835\uddd8\ud835\udddc\ud835\udde7 \ud83c\udf6b\ud83e\uddc3",
+                "group_id": "-1002190988677"
+            },
+            {
+                "title": "\ud83c\udfa9\ud835\udfd0\ud835\udfd2/\ud835\udfd5 \ud835\udce2\ud835\udcf1\ud835\udcf8\ud835\udcf9 \ud835\udceb\ud835\udd02 \ud835\udce1\ud835\udcf8\ud835\udcec\ud835\udcf4\ud835\udd02\ud83c\udfa9",
+                "group_id": "-1001538343907"
+            },
+            {
+                "title": "\ud835\udc6d\ud835\udc93\ud835\udc86\ud835\udc85\u2018\ud835\udc94 \ud835\udc6b\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc97\ud835\udc86\ud835\udc93\ud835\udc9a \ud83d\ude96",
+                "group_id": "-1001599947599"
+            },
+            {
+                "title": "F-Hain\u2018s Weed Express",
+                "group_id": "-1001390524187"
+            },
+            {
+                "title": "Berlin Plug 2",
+                "group_id": "-1002106362415"
+            },
+            {
+                "title": "DrOGoJ ! \ud83e\udd73\ud83d\ude4c (\ud83d\udccdPotsdamo)",
+                "group_id": "-1001442293827"
+            },
+            {
+                "title": "Berlin Krakadil",
+                "group_id": "-1001796689375"
+            },
+            {
+                "title": "berlin medi City \ud83d\udc8a",
+                "group_id": "-1001338537258"
+            },
+            {
+                "title": "24/7",
+                "group_id": "-1001716649575"
+            },
+            {
+                "title": "Berlin Charlottenburg Bando\ud83d\udde1\ufe0f",
+                "group_id": "-1001520519700"
+            },
+            {
+                "title": ".",
+                "group_id": "-1001343602922"
+            },
+            {
+                "title": "Rave Party BERLIN\u00a9",
+                "group_id": "-1001215737324"
+            },
+            {
+                "title": "\u0e3f\u0246\u2c64\u2c60\u0142\u20a6'\u20b4 \u20a5\u00d8\u20b4\u20ae \u20a9\u20b3\u20a6\u20ae\u0246\u0110 \u0110\u2c64\u0244\u20b2\u20b4 !!\u00a1\u00a1",
+                "group_id": "-1001293833052"
+            },
+            {
+                "title": "DEUTSCHER CHAT \ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea\ud83c\udde9\ud83c\uddea",
+                "group_id": "-1001439544476"
+            },
+            {
+                "title": "DrugsFactory23",
+                "group_id": "-1002045201575"
+            },
+            {
+                "title": "Partyberlin",
+                "group_id": "-1001312621128"
+            },
+            {
+                "title": "Rabattschn\u00fcffler - Deals, Rabatte, Coupons, Preisfehler & kuriose Produkte.",
+                "group_id": "-1001464368273"
+            },
+            {
+                "title": "Coke Taxi Berlin",
+                "group_id": "-1002084952758"
+            },
+            {
+                "title": "Cola Berlin",
+                "group_id": "-1001489514642"
+            }
+        ]
+    }
+}

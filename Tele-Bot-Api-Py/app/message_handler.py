@@ -25,6 +25,9 @@ groups = db_handler.get_all_groups()
 
 bot_group_status={}
 blocked_groups_per_bot = {}
+
+print(len(groups))
+
 for b in bots:
     bot_group_status[b.id]={"AvailableGroups":copy.deepcopy(groups),"VisitedGroups":[]}
     blocked_groups_per_bot[b.id]={"count":0,"groups":[]}
