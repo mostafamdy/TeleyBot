@@ -24,15 +24,20 @@ bots = db_handler.get_bots_have_message()
 groups = db_handler.get_all_groups()
 
 bot_group_status={}
-
+blocked_groups_per_bot = {}
 for b in bots:
     bot_group_status[b.id]={"AvailableGroups":copy.deepcopy(groups),"VisitedGroups":[]}
+    blocked_groups_per_bot[b.id]=[]
 
 print([b.id for b in bots])
 
 with open("senderSettings.json", "r") as file:
     settings = json.load(file)
 
+def save_blocked_groups():
+    # Save to a file
+    with open("blocked_groups.json", "w") as file:
+        json.dump(blocked_groups_per_bot, file, indent=4)
 
 async def send_message(breakPointIndex):
     startPoint = int(len(bot_group_status)/working_bots_at_same_time) * breakPointIndex
@@ -90,23 +95,34 @@ async def send_message(breakPointIndex):
                         db_handler.ban(bot.id)
                         blocked_bots.append(bot.id)
                         break
-                    
+
                     elif "You're banned from sending messages in supergroups/channels" in ret:
-                        print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
+                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
+                    
                     elif "You can't write in this chat" in ret:
-                        print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
+                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
+                    
                     elif "CHAT_SEND_PLAIN_FORBIDDEN" in ret:
-                        print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
+                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
+                    
                     elif "Could not find the input entity for PeerChannel" in ret:
+                        blocked_bots[bot.id].append({"title":random_group.title,"group_id":random_group.id})
                         print(ret)
                         continue
 
+                    else:
+                        print(ret)
+                        
+
                 bot_group_status[bot.id]['VisitedGroups'].append(random_group)
                 await asyncio.sleep(random.uniform(2,5))
-
+            
 working_bots_at_same_time = settings['workingBotsAtSameTime']
 # bot will released after 25 message and then 
 # message_speed_range from 1 to working bots count if you want more speed add more bots
