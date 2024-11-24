@@ -13,7 +13,7 @@ class MessageManager:
             #group = await self.client.get_entity(group_id)
             #await self.client.send_message(group_id, "message",)
             await self.client.forward_messages(group_id,message,-4535626904)
-            return 0
+            return "200"
         
         except Exception as e:
              print(e)
@@ -21,7 +21,7 @@ class MessageManager:
                 "message": "Error sending message",
                 "error": str(e)
              })
-             return -1
+             return e
 
     
     """    async def send_group_message(self, group_title, message):
