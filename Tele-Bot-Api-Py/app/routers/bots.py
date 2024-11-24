@@ -80,8 +80,7 @@ async def send_message(message:Message):
                 # await bot_client.disconnect()
                 
             except Exception as e:
-                print("error")
-                print(e)
+                print(f"ERROR {bot.id}\n {e}")
                 continue
         
         if last_message_id is None:
