@@ -258,7 +258,7 @@ async def groups_have_problems():
 
     for id in bot_ids:
         for group_info in blocked_groups[id]['groups']:
-            all_ids.append({"title" : group_info['title'],"id" : group_info['group_id']})
+            all_ids.append(group_info['title'])
 
     value_counts = Counter(all_ids)
     return value_counts
