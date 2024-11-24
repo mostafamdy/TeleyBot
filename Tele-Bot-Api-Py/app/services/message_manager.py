@@ -22,7 +22,7 @@ class MessageManager:
                 "error": str(e)
              })
              print(f"ERROR TYPE {type(e)}")
-             return e
+             return str(e)
 
     
     """    async def send_group_message(self, group_title, message):
