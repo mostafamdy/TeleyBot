@@ -16,12 +16,12 @@ class MessageManager:
             return "200"
         
         except Exception as e:
-             print(e)
+             #print(e)
              HTTPException(status_code=500, detail={
                 "message": "Error sending message",
                 "error": str(e)
              })
-             print(f"ERROR TYPE {type(e)}")
+             #print(f"ERROR TYPE {type(e)}")
              return str(e)
 
     

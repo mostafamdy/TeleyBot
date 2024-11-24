@@ -27,7 +27,7 @@ bot_group_status={}
 blocked_groups_per_bot = {}
 for b in bots:
     bot_group_status[b.id]={"AvailableGroups":copy.deepcopy(groups),"VisitedGroups":[]}
-    blocked_groups_per_bot[b.id]=[]
+    blocked_groups_per_bot[b.id]={"count":0,"groups":[]}
 
 print([b.id for b in bots])
 
@@ -37,6 +37,8 @@ with open("senderSettings.json", "r") as file:
 def save_blocked_groups():
     # Save to a file
     with open("blocked_groups.json", "w") as file:
+        for b in blocked_groups_per_bot.keys():
+            blocked_groups_per_bot[b]['count']=len(blocked_groups_per_bot[b]['groups'])
         json.dump(blocked_groups_per_bot, file, indent=4)
 
 async def send_message(breakPointIndex):
@@ -98,22 +100,22 @@ async def send_message(breakPointIndex):
                         break
 
                     elif "You're banned from sending messages in supergroups/channels" in ret:
-                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id]['groups'].append({"title":random_group.title,"group_id":random_group.id})
                         #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
                     
                     elif "You can't write in this chat" in ret:
-                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id]['groups'].append({"title":random_group.title,"group_id":random_group.id})
                         #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
                     
                     elif "CHAT_SEND_PLAIN_FORBIDDEN" in ret:
-                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id]['groups'].append({"title":random_group.title,"group_id":random_group.id})
                         #print(f"Remove this group \n{random_group.title}\nGroup ID:{random_group.id}")
                         continue
                     
                     elif "Could not find the input entity for PeerChannel" in ret:
-                        blocked_groups_per_bot[bot.id].append({"title":random_group.title,"group_id":random_group.id})
+                        blocked_groups_per_bot[bot.id]['groups'].append({"title":random_group.title,"group_id":random_group.id})
                         print(ret)
                         continue
 
