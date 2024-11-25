@@ -30,8 +30,9 @@ class TelegramBot:
                 api_id=api_id,
                 api_hash=api_hash,
                 retry_delay=1,
-                auto_reconnect=True,
+                auto_reconnect=False,
                 timeout=20,
+                request_retries=3,
                 proxy=(proxy.ip,proxy.port)
             ) 
 
@@ -41,8 +42,9 @@ class TelegramBot:
                 api_id=api_id,
                 api_hash=api_hash,
                 retry_delay=1,
-                auto_reconnect=True,
+                auto_reconnect=False,
                 timeout=20,
+                request_retries=3,
 
             )
         self.connection_manager = ConnectionManager(client)

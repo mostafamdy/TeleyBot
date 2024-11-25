@@ -50,12 +50,12 @@ async def send_message(breakPointIndex):
     
     startPoint = int(len(bot_group_status)/working_bots_at_same_time) * breakPointIndex
     _bots = bots[startPoint:]+bots[:startPoint]
-    
     blocked_bots=[]
+
     while True:
+        
         if len(blocked_bots)==len(_bots):
             break
-
         for bot in _bots:
             if bot.id in blocked_bots:
                 continue
