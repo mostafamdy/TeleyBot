@@ -41,6 +41,7 @@ def save_blocked_groups():
         json.dump(blocked_groups_per_bot, file, indent=4)
 
 async def send_message(breakPointIndex):
+
     startPoint = int(len(bot_group_status)/working_bots_at_same_time) * breakPointIndex
 
     _bots = bots[startPoint:]+bots[:startPoint]
@@ -48,12 +49,12 @@ async def send_message(breakPointIndex):
     blocked_bots=[]
 
     while True:
+        
         for bot in _bots:
             save_blocked_groups()
             
             if bot.id in blocked_bots:
                 continue
-
             start_at = datetime.strptime(bot.start_sending_at, "%Y-%m-%d %H:%M:%S")
             time_diff = datetime.now() - start_at
             working_hours = time_diff.total_seconds() / 3600 
@@ -123,7 +124,7 @@ async def send_message(breakPointIndex):
                         
 
                 bot_group_status[bot.id]['VisitedGroups'].append(random_group)    
-                #await asyncio.sleep(random.uniform(2,5))
+                await asyncio.sleep(random.uniform(2,5))
 
             await telegram_bot.disconnect()
             

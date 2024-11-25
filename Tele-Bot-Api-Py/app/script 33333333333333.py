@@ -23,6 +23,7 @@ def refresh_data():
 
 async def process_bot(bot):
     print(f"Bot {bot.id} is online.")
+    
     try:
         bot_instance = TelegramBot(bot.session)
 
@@ -31,9 +32,12 @@ async def process_bot(bot):
 
         if bot.id not in all_groups:
             all_groups[bot.id] = await bot_instance.get_groups()
+
         groups = all_groups[bot.id]
+
         center_group_spam = next(
             (group for group in groups if group.title == SPAM_GROUP.get('title')), None)
+        
         if not center_group_spam:
             print(f"Bot {bot.id} has no spam center group.")
 
@@ -51,14 +55,17 @@ async def process_bot(bot):
         await bot_instance.forward_message_to_group(
             bot.message_id, center_group_spam, ADMIN_GROUP['title']
         )
+
         tasks = [
             bot_instance.forward_message_to_group(
                 bot.message_id, group, ADMIN_GROUP['title'])
             for group in groups_without_admin
         ]
+        
         await asyncio.gather(*tasks)
 
         print(f"Bot {bot.id} has sent messages to all groups.")
+    
     except Exception as e:
         str_e = str(e)
         print(f"Bot {bot.id} encountered an error: {str_e}")
