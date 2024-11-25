@@ -115,7 +115,7 @@ async def join_group(data: JoinGroupALL):
             except Exception as e:
                 # if error is The key is not registered in the system (caused by ImportChatInviteRequest)
                 # The user has been deleted/deactivated (caused by ImportChatInviteRequest)
-                print(e)
+                print(f"({bot.id}) {e}")
                 continue
             # Join Group
             try:
