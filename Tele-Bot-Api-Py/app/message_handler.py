@@ -55,6 +55,7 @@ async def send_message(breakPointIndex):
             
             if bot.id in blocked_bots:
                 continue
+            
             start_at = datetime.strptime(bot.start_sending_at, "%Y-%m-%d %H:%M:%S")
             time_diff = datetime.now() - start_at
             working_hours = time_diff.total_seconds() / 3600 
