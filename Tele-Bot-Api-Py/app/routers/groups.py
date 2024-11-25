@@ -128,10 +128,10 @@ async def join_group(data: JoinGroupALL):
 
                 await telegram_bot.disconnect()
             except Exception as e:
-                print(e)
+                print(f"({bot.id}) {e}")
                 continue
     except Exception as e:
-        print(e)
+        print(f"({bot.id}) {e}")
         return {"message": f"ERROR {e}"}
     finally:
         if is_groub_saved == False:
