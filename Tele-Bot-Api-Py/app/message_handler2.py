@@ -88,8 +88,6 @@ async def send_message(breakPointIndex):
             botGroups =  bot_group_status[bot.id]['AvailableGroups'] 
             selected_groups = random.sample(botGroups, min(settings['botMaxMessages'], len(botGroups)))
             
-            print(selected_groups)
-            
             if not selected_groups:
                 print(f"Bot {bot.id} has no more groups to process.")
                 continue
