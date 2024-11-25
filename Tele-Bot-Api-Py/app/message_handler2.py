@@ -76,19 +76,20 @@ async def send_message(breakPointIndex):
             bot_instance = TelegramBot(bot.session)
             
             try:
-                print(f"{datetime.now()} Bot ({bot.id}) Check Connection")
                 if not bot_instance.is_connected():
-                    print(f"{datetime.now()} Bot ({bot.id}) Connecting...  ")
                     await bot_instance.connect()
             except Exception as e:
+                continue
+                """                
                 isBanned = await bot_instance.is_banned()
-                print(f"{datetime.now()} Bot is Banned ({bot.id}) : {isBanned}")
+                #print(f"{datetime.now()} Bot is Banned ({bot.id}) : {isBanned}")
                 if isBanned:
                     db.ban(bot.id)
                     blocked_bots.append(bot.id)
                     continue
-            print(f"{datetime.now()} Bot ({bot.id}) Connected ")
+                """
 
+            
             botGroups =  bot_group_status[bot.id]['AvailableGroups'] 
             selected_groups = random.sample(botGroups, min(settings['botMaxMessages'], len(botGroups)))
             
@@ -121,6 +122,7 @@ async def send_message(breakPointIndex):
             except Exception as e:
                 str_e = str(e)
                 print(e)
+                """                
                 isBanned = await bot_instance.is_banned()
                 
                 print(f"Bot is Banned ({bot.id}) : {isBanned}")
@@ -128,6 +130,7 @@ async def send_message(breakPointIndex):
                     db.ban(bot.id)
                     blocked_bots.append(bot.id)
                     continue
+                """
 
 
 async def main():

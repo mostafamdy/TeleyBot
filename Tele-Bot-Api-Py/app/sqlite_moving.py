@@ -18,7 +18,7 @@ try:
     source_cursor.execute("SELECT * FROM bots")  # Replace 'table_name' with your actual table
     data = source_cursor.fetchall()
 
-    for raw in data[-50:]:
+    for raw in data[-55:]:
         # Insert data into the destination database
         # Adjust column names and table structure as needed
         destination_cursor.execute(
