@@ -22,17 +22,28 @@ class ProxyData:
         self.location=""
 
 class TelegramBot:
-    def __init__(self, string_session='', api_id=API['id'], api_hash=API['hash'],proxy=None):
+    def __init__(self, string_session='', api_id=API['id'], api_hash=API['hash'],proxy=None,speed=False):
+        if speed:
+            retry_delay=1
+            auto_reconnect=False
+            timeout=20
+            request_retries=3
+        else:
+            retry_delay=5
+            auto_reconnect=True
+            timeout=20
+            request_retries=5
+
         if proxy is not None:
 
             client = TelegramClient(
                 session=StringSession(string_session),
                 api_id=api_id,
                 api_hash=api_hash,
-                retry_delay=1,
-                auto_reconnect=False,
-                timeout=20,
-                request_retries=3,
+                retry_delay=retry_delay,
+                auto_reconnect=auto_reconnect,
+                timeout=timeout,
+                request_retries=request_retries,
                 proxy=(proxy.ip,proxy.port)
             ) 
 
@@ -41,10 +52,10 @@ class TelegramBot:
                 session=StringSession(string_session),
                 api_id=api_id,
                 api_hash=api_hash,
-                retry_delay=1,
-                auto_reconnect=False,
-                timeout=20,
-                request_retries=3,
+                retry_delay=retry_delay,
+                auto_reconnect=auto_reconnect,
+                timeout=timeout,
+                request_retries=request_retries,
 
             )
         self.connection_manager = ConnectionManager(client)

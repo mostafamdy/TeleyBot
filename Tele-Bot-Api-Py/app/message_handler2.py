@@ -73,7 +73,7 @@ async def send_message(breakPointIndex):
                 bot_group_status[bot.id]['AvailableGroups'] = bot_group_status[bot.id]['VisitedGroups']
                 bot_group_status[bot.id]['VisitedGroups'] = []
 
-            bot_instance = TelegramBot(bot.session)
+            bot_instance = TelegramBot(bot.session,speed=True)
             
             try:
                 if not bot_instance.is_connected():
