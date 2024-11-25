@@ -137,12 +137,14 @@ async def main():
 
 
 if __name__ == "__main__":
-    try:
+    asyncio.run(main())
+    """try:
         asyncio.run(main())
     except KeyboardInterrupt as e:
         print(f"Script terminated by user: {str(e)}")
-        os.system("sudo systemctl restart massage")
+        #os.system("sudo systemctl restart massage")
     except Exception as e:
         print(f"Script encountered an error: {str(e)}")
         print("Script terminated.")
-        os.system("sudo systemctl restart massage")
+        #os.system("sudo systemctl restart massage")
+"""
