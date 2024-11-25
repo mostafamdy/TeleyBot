@@ -73,6 +73,7 @@ async def send_message(breakPointIndex):
                 bot_group_status[bot.id]['VisitedGroups'] = []
 
             bot_instance = TelegramBot(bot.session)
+            
             try:
                 if not bot_instance.is_connected():
                     await bot_instance.connect()
@@ -84,7 +85,7 @@ async def send_message(breakPointIndex):
                     db.ban(bot.id)
                     blocked_bots.append(bot.id)
                     continue
-
+            print(f"Bot ({bot.id}) Connected ")
             botGroups =  bot_group_status[bot.id]['AvailableGroups'] 
             selected_groups = random.sample(botGroups, min(settings['botMaxMessages'], len(botGroups)))
             
@@ -106,7 +107,7 @@ async def send_message(breakPointIndex):
             try:
                 tasks = [
                     bot_instance.send_group_message_by_id(
-                        group_id , bot.message_id)
+                        group_id , bot.message_id,bot.id)
                     for group_id in groups_to_send
                 ]
                 

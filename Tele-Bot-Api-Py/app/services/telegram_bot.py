@@ -102,8 +102,10 @@ class TelegramBot:
         return self.message_manager.forward_message_to_all_groups(
             message_id, ADMIN_GROUP['id'], [ADMIN_GROUP['title']]
         )
-    def send_group_message_by_id(self,groupID,messageID):
-        return self.message_manager.send_message(group_id=groupID,message=messageID)
+    def send_group_message_by_id(self,groupID,messageID,botID=None):
+        self.message_manager.send_message(group_id=groupID,message=messageID)
+        print(f"{botID} Message sent Group ID {groupID}")
+        return 
     
     def leave_group(self, group_title):
         return self.group_manager.leave_group(group_title)
