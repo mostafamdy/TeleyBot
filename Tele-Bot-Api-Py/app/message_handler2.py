@@ -4,6 +4,7 @@ import json
 import os
 import random
 import copy
+import time
 
 try:
     from app.constants import ADMIN_GROUP, SPAM_GROUP
@@ -75,17 +76,19 @@ async def send_message(breakPointIndex):
             bot_instance = TelegramBot(bot.session)
             
             try:
+                print(f"{datetime.now()} Bot ({bot.id}) Check Connection")
                 if not bot_instance.is_connected():
+                    print(f"{datetime.now()} Bot ({bot.id}) Connecting...  ")
                     await bot_instance.connect()
-            
             except Exception as e:
                 isBanned = await bot_instance.is_banned()
-                print(f"Bot is Banned ({bot.id}) : {isBanned}")
+                print(f"{datetime.now()} Bot is Banned ({bot.id}) : {isBanned}")
                 if isBanned:
                     db.ban(bot.id)
                     blocked_bots.append(bot.id)
                     continue
-            print(f"Bot ({bot.id}) Connected ")
+            print(f"{datetime.now()} Bot ({bot.id}) Connected ")
+
             botGroups =  bot_group_status[bot.id]['AvailableGroups'] 
             selected_groups = random.sample(botGroups, min(settings['botMaxMessages'], len(botGroups)))
             
@@ -113,7 +116,7 @@ async def send_message(breakPointIndex):
                 
                 await asyncio.gather(*tasks)
 
-                print(f"Bot {bot.id} has sent messages to all groups.")
+                print(f"{datetime.now()} Bot {bot.id} has sent messages to {len(groups_to_send)} groups.")
             
             except Exception as e:
                 str_e = str(e)
