@@ -29,10 +29,9 @@ class TelegramBot:
                 session=StringSession(string_session),
                 api_id=api_id,
                 api_hash=api_hash,
-                retry_delay=1,
-                auto_reconnect=False,
+                retry_delay=5,
+                auto_reconnect=True,
                 timeout=20,
-                request_retries=3,
                 proxy=(proxy.ip,proxy.port)
             ) 
 
@@ -41,11 +40,9 @@ class TelegramBot:
                 session=StringSession(string_session),
                 api_id=api_id,
                 api_hash=api_hash,
-                retry_delay=1,
-                auto_reconnect=False,
+                retry_delay=5,
+                auto_reconnect=True,
                 timeout=20,
-                request_retries=3,
-
             )
         self.connection_manager = ConnectionManager(client)
         self.group_manager = GroupManager(client)
