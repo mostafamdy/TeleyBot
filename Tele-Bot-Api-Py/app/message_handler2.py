@@ -129,7 +129,6 @@ async def send_message(breakPointIndex):
 
 
 async def main():
-    random.shuffle(bots)
     tasks = [send_message(i) for i in range(working_bots_at_same_time)]
     await asyncio.gather(*tasks)
     print("All bots have sent messages.")
